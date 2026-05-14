@@ -1,12 +1,67 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resumo</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <h1>Resumo Básico</h1>
-    <p>Página dedicada a sumários principais.</p>
+    <header class="main-header">
+        <div class="container header-row">
+            <a class="brand" href="index.html">Fitness App</a>
+            <nav>
+                <a href="início.html">Início</a>
+                <a href="treinos.html">Treinos</a>
+                <a href="resumo.html">Resumo</a>
+                <a href="Menu.html">Menu</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container page-section">
+        <section class="summary-header">
+            <h1>Resumo de desempenho</h1>
+            <p>Confira seu histórico e veja onde está avançando.</p>
+        </section>
+
+        <section id="summary-cards" class="stats-grid">
+            <article class="stat-card">
+                <h3>0</h3>
+                <p>Treinos cadastrados</p>
+            </article>
+            <article class="stat-card">
+                <h3>0 min</h3>
+                <p>Total de minutos</p>
+            </article>
+            <article class="stat-card">
+                <h3>0%</h3>
+                <p>Meta cumprida</p>
+            </article>
+        </section>
+
+        <section class="progress-list">
+            <article class="progress-card">
+                <h3>Frequência semanal</h3>
+                <div class="progress-bar"><span style="width: 60%"></span></div>
+            </article>
+            <article class="progress-card">
+                <h3>Objetivo médio</h3>
+                <div class="progress-bar"><span style="width: 45%"></span></div>
+            </article>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-row">
+            <p>Fitness App • Resumo</p>
+            <span>Dados atualizados automaticamente</span>
+        </div>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/app.js"></script>
 </body>
 </html>

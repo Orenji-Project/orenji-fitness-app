@@ -1,17 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menu</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <nav>
-        <ul>
-            <li><a href="início.html">Início</a></li>
-            <li><a href="treinos.html">Treinos</a></li>
-            <li><a href="resumo.html">Resumo</a></li>
-        </ul>
-    </nav>
+    <header class="main-header">
+        <div class="container header-row">
+            <a class="brand" href="index.html">Fitness App</a>
+            <nav>
+                <a href="início.html">Início</a>
+                <a href="treinos.html">Treinos</a>
+                <a href="resumo.html">Resumo</a>
+                <a href="Menu.html">Menu</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container page-section">
+        <section class="menu-grid">
+            <article class="menu-card">
+                <h2>Planejamento</h2>
+                <p>Monte sua rotina de treinos e decida o foco do dia.</p>
+                <a class="button button-secondary" href="treinos.html">Ir para Treinos</a>
+            </article>
+            <article class="menu-card">
+                <h2>Acompanhamento</h2>
+                <p>Veja seu desempenho em gráficos e totais semanais.</p>
+                <a class="button button-secondary" href="resumo.html">Ir para Resumo</a>
+            </article>
+            <article class="menu-card">
+                <h2>Motivação</h2>
+                <p>Registre seus objetivos e mantenha-se no caminho.</p>
+                <a class="button button-secondary" href="index.html">Ver Home</a>
+            </article>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-row">
+            <p>Fitness App • Menu</p>
+            <span>Seu atalho para todas as páginas</span>
+        </div>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/app.js"></script>
 </body>
 </html>

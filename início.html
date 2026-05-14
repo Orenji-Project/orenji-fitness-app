@@ -1,11 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fitness App</title>
+    <title>Início</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <h1>Welcome to the Fitness App</h1>
+    <header class="main-header">
+        <div class="container header-row">
+            <a class="brand" href="index.html">Fitness App</a>
+            <nav>
+                <a href="início.html">Início</a>
+                <a href="treinos.html">Treinos</a>
+                <a href="resumo.html">Resumo</a>
+                <a href="Menu.html">Menu</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container page-section">
+        <section class="intro-card">
+            <h1>Boas-vindas ao seu centro de treinos</h1>
+            <p>Use este painel para iniciar treinos, acompanhar resultados e manter sua rotina fitness consistente.</p>
+            <div class="hero-actions">
+                <a class="button" href="treinos.html">Abrir treinos</a>
+                <a class="button button-secondary" href="resumo.html">Ver resumo</a>
+            </div>
+        </section>
+
+        <section class="stats-grid">
+            <article class="stat-card">
+                <h3>3 treinos</h3>
+                <p>Programados para hoje</p>
+            </article>
+            <article class="stat-card">
+                <h3>12 sessões</h3>
+                <p>Esta semana</p>
+            </article>
+            <article class="stat-card">
+                <h3>68%</h3>
+                <p>Meta de conclusão</p>
+            </article>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-row">
+            <p>Fitness App • Início</p>
+            <span>Rotina mais saudável</span>
+        </div>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/app.js"></script>
 </body>
 </html>

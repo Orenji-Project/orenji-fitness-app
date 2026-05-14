@@ -1,0 +1,351 @@
+/* Estilo principal para Fitness App */
+:root {
+    --background: #0f172a;
+    --surface: #111827;
+    --surface-alt: #1f2937;
+    --text: #e2e8f0;
+    --text-muted: #94a3b8;
+    --primary: #5b96ff;
+    --primary-strong: #3b82f6;
+    --accent: #22c55e;
+    --border: rgba(255,255,255,0.08);
+    --radius: 22px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: radial-gradient(circle at top, rgba(59,130,246,0.18), transparent 35%),
+                linear-gradient(180deg, #020617 0%, #0b1120 100%);
+    color: var(--text);
+    min-height: 100%;
+}
+
+body {
+    line-height: 1.6;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.container {
+    width: min(1120px, 100% - 2rem);
+    margin: 0 auto;
+}
+
+.main-header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: rgba(15,23,42,0.95);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.header-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem 0;
+}
+
+.brand {
+    font-size: 1.35rem;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+nav a {
+    color: var(--text-muted);
+    font-size: 0.98rem;
+    transition: color 0.2s ease;
+}
+
+nav a:hover,
+nav a.active {
+    color: var(--primary);
+}
+
+.hero-section,
+.page-section {
+    padding: 3rem 0 2rem;
+}
+
+.hero-copy {
+    max-width: 40rem;
+}
+
+.eyebrow {
+    display: inline-block;
+    margin-bottom: 1rem;
+    color: var(--accent);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-size: 0.8rem;
+}
+
+.hero-copy h1,
+.page-header h1,
+.summary-header h1,
+.intro-card h1 {
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    margin: 0 0 1rem;
+}
+
+.hero-copy p,
+.page-header p,
+.summary-header p,
+.intro-card p {
+    max-width: 42rem;
+    color: var(--text-muted);
+}
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.95rem 1.6rem;
+    border-radius: 999px;
+    border: none;
+    background: linear-gradient(135deg, var(--primary), var(--primary-strong));
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 16px 30px rgba(59,130,246,0.18);
+}
+
+.button-secondary {
+    background: rgba(255,255,255,0.08);
+    color: var(--text);
+}
+
+.features-section,
+.stats-grid,
+.menu-grid,
+.progress-list,
+.workout-grid {
+    display: grid;
+    gap: 1.25rem;
+}
+
+.features-section {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    padding-bottom: 2rem;
+}
+
+.feature-card,
+.stat-card,
+.menu-card,
+.progress-card,
+.intro-card,
+.workout-form-card,
+.workout-panel,
+.highlight-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: var(--radius);
+    padding: 1.75rem;
+    box-shadow: 0 20px 45px rgba(0,0,0,0.16);
+}
+
+.feature-card h2,
+.menu-card h2,
+.stat-card h3,
+.progress-card h3,
+.workout-panel h2,
+.highlight-card strong {
+    margin: 0 0 0.75rem;
+}
+
+.highlight-card {
+    max-width: 26rem;
+    background: linear-gradient(135deg, rgba(59,130,246,0.25), rgba(15,23,42,0.85));
+}
+
+.highlight-card span {
+    color: var(--accent);
+    font-weight: 600;
+}
+
+.workout-grid {
+    grid-template-columns: minmax(0, 2fr) minmax(280px, 1fr);
+}
+
+.workout-list {
+    display: grid;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.workout-item {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: 18px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+}
+
+.workout-item strong {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.workout-meta {
+    display: grid;
+    gap: 0.25rem;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+.workout-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    justify-content: center;
+}
+
+.small-button {
+    padding: 0.55rem 0.85rem;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.12);
+    background: rgba(255,255,255,0.06);
+    color: var(--text);
+    cursor: pointer;
+}
+
+.workout-form-card form {
+    display: grid;
+    gap: 1rem;
+}
+
+label {
+    display: block;
+    font-size: 0.95rem;
+    margin-bottom: 0.4rem;
+    color: var(--text-muted);
+}
+
+input,
+select {
+    width: 100%;
+    padding: 0.95rem 1rem;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.12);
+    background: rgba(255,255,255,0.04);
+    color: var(--text);
+}
+
+input:focus,
+select:focus {
+    outline: none;
+    border-color: rgba(59,130,246,0.8);
+}
+
+.stat-card h3 {
+    font-size: 2rem;
+}
+
+.progress-list {
+    grid-template-columns: 1fr 1fr;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 0.85rem;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.08);
+    overflow: hidden;
+}
+
+.progress-bar span {
+    display: block;
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    border-radius: 999px;
+}
+
+.page-header,
+.summary-header,
+.intro-card {
+    margin-bottom: 2rem;
+}
+
+.menu-grid {
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+}
+
+.menu-card h2 {
+    margin-bottom: 0.75rem;
+}
+
+.site-footer {
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding: 1.5rem 0;
+    margin-top: 2rem;
+}
+
+.footer-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+@media (max-width: 900px) {
+    .workout-grid,
+    .progress-list {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 700px) {
+    .header-row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    nav {
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .hero-actions,
+    .page-header,
+    .summary-header {
+        gap: 0.75rem;
+    }
+}
