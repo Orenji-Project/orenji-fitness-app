@@ -15,32 +15,61 @@
                 <a href="treinos.html">Treinos</a>
                 <a href="resumo.html">Resumo</a>
                 <a href="Menu.html">Menu</a>
+                <a href="configurações.html">Configurações</a>
             </nav>
         </div>
     </header>
 
     <main class="container page-section">
-        <section class="intro-card">
-            <h1>Boas-vindas ao seu centro de treinos</h1>
-            <p>Use este painel para iniciar treinos, acompanhar resultados e manter sua rotina fitness consistente.</p>
-            <div class="hero-actions">
-                <a class="button" href="treinos.html">Abrir treinos</a>
-                <a class="button button-secondary" href="resumo.html">Ver resumo</a>
+        <section class="welcome-card">
+            <div class="welcome-copy">
+                <p class="welcome-salutation">Olá, <span id="user-name">Camila</span> 👋</p>
+                <h1>Pronta para transformar seu treino hoje?</h1>
+                <p class="motivational-text">Cada treino te aproxima do próximo nível. Vamos fazer dessa semana o começo de uma nova rotina.</p>
+                <div class="hero-actions">
+                    <a class="button" href="treinos.html">Ver treinos</a>
+                    <a class="button button-secondary" href="resumo.html">Ver resumo</a>
+                </div>
             </div>
         </section>
 
-        <section class="stats-grid">
-            <article class="stat-card">
-                <h3>3 treinos</h3>
-                <p>Programados para hoje</p>
-            </article>
-            <article class="stat-card">
-                <h3>12 sessões</h3>
-                <p>Esta semana</p>
-            </article>
-            <article class="stat-card">
-                <h3>68%</h3>
-                <p>Meta de conclusão</p>
+        <section class="schedule-section">
+            <div class="section-header">
+                <h2>Agenda da semana</h2>
+                <p>Confira o foco de cada dia e escolha seu treino com mais clareza.</p>
+            </div>
+            <div class="roller" id="schedule-roller"></div>
+        </section>
+
+        <section class="chart-section">
+            <div class="section-header">
+                <h2>Condicionamento físico</h2>
+                <p>Um medidor de frequência: quanto mais treinos, mais perto do verde.</p>
+            </div>
+            <article class="chart-card">
+                <div class="fitness-gauge" id="fitness-gauge">
+                    <div class="gauge-meta">
+                        <div>
+                            <span class="meter-title">Semana passada</span>
+                            <strong id="meter-current-count">0x</strong>
+                        </div>
+                        <div>
+                            <span class="meter-title">Meta</span>
+                            <strong id="meter-goal-count">0x</strong>
+                        </div>
+                    </div>
+                    <div class="bar-gauge">
+                        <div class="gauge-bar-track">
+                            <div class="gauge-bar-fill" id="gauge-bar-fill"></div>
+                            <div class="gauge-bar-thumb" id="gauge-bar-thumb"></div>
+                        </div>
+                    </div>
+                    <div class="gauge-labels">
+                        <span>Baixa carga</span>
+                        <span>Carga normal</span>
+                        <span>Treino elevado</span>
+                    </div>
+                </div>
             </article>
         </section>
     </main>

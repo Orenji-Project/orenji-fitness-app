@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configurações</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/settings.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="container header-row">
+            <a class="brand" href="index.html">Fitness App</a>
+            <nav>
+                <a href="início.html">Início</a>
+                <a href="treinos.html">Treinos</a>
+                <a href="resumo.html">Resumo</a>
+                <a href="Menu.html">Menu</a>
+                <a href="configuracoes.html">Configurações</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container page-section">
+        <section class="settings-header">
+            <h1>Configurações</h1>
+            <p>Personalize sua experiência e ajuste as preferências da aplicação.</p>
+        </section>
+
+        <section class="settings-grid">
+            <article class="settings-card">
+                <div class="settings-card-header">
+                    <h2>Personalização de cores</h2>
+                    <p>Customize a paleta de cores da aplicação conforme sua preferência.</p>
+                </div>
+
+                <div class="color-picker-group">
+                    <label for="primary-color">Cor primária</label>
+                    <div class="color-input-wrapper">
+                        <input type="color" id="primary-color" value="#5b96ff" class="color-input">
+                        <span id="primary-value" class="color-value">#5b96ff</span>
+                    </div>
+                </div>
+
+                <div class="color-picker-group">
+                    <label for="accent-color">Cor de destaque</label>
+                    <div class="color-input-wrapper">
+                        <input type="color" id="accent-color" value="#22c55e" class="color-input">
+                        <span id="accent-value" class="color-value">#22c55e</span>
+                    </div>
+                </div>
+
+                <div class="color-picker-group">
+                    <label for="danger-color">Cor de atenção</label>
+                    <div class="color-input-wrapper">
+                        <input type="color" id="danger-color" value="#f43f5e" class="color-input">
+                        <span id="danger-value" class="color-value">#f43f5e</span>
+                    </div>
+                </div>
+
+                <div class="color-picker-group">
+                    <label for="warning-color">Cor de aviso</label>
+                    <div class="color-input-wrapper">
+                        <input type="color" id="warning-color" value="#facc15" class="color-input">
+                        <span id="warning-value" class="color-value">#facc15</span>
+                    </div>
+                </div>
+
+                <div class="color-preview">
+                    <h3>Prévia das cores</h3>
+                    <div class="preview-grid">
+                        <div class="preview-card primary-preview">
+                            <span>Primária</span>
+                        </div>
+                        <div class="preview-card accent-preview">
+                            <span>Destaque</span>
+                        </div>
+                        <div class="preview-card danger-preview">
+                            <span>Atenção</span>
+                        </div>
+                        <div class="preview-card warning-preview">
+                            <span>Aviso</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="settings-actions">
+                    <button class="button" id="save-colors">Guardar cores</button>
+                    <button class="button button-secondary" id="reset-colors">Restaurar padrão</button>
+                </div>
+            </article>
+
+            <article class="settings-card">
+                <div class="settings-card-header">
+                    <h2>Sobre a aplicação</h2>
+                    <p>Informações sobre o Fitness App.</p>
+                </div>
+
+                <div class="settings-info">
+                    <div class="info-item">
+                        <span class="info-label">Versão</span>
+                        <strong class="info-value">1.0.0</strong>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Última atualização</span>
+                        <strong class="info-value">14 de maio de 2026</strong>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Desenvolvedor</span>
+                        <strong class="info-value">Fitness Team</strong>
+                    </div>
+                </div>
+
+                <div class="settings-description">
+                    <p>O Fitness App é sua ferramenta pessoal para organizar treinos, acompanhar progresso e manter uma rotina saudável.</p>
+                </div>
+            </article>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-row">
+            <p>Fitness App • Configurações</p>
+            <span>Personalize sua experiência</span>
+        </div>
+    </footer>
+
+    <script src="js/settings.js"></script>
+</body>
+</html>

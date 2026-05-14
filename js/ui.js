@@ -12,6 +12,55 @@ function initWorkoutApp() {
     if (document.getElementById('summary-cards')) {
         renderSummary();
     }
+
+    if (document.getElementById('schedule-roller')) {
+        renderHomePage();
+    }
+}
+
+function renderHomePage() {
+    const nameElement = document.getElementById('user-name');
+    const loader = document.getElementById('schedule-roller');
+    const previousValue = document.getElementById('chart-previous-value');
+    const currentValue = document.getElementById('chart-current-value');
+
+    if (nameElement) {
+        nameElement.textContent = userProfile.displayName || 'amiga';
+    }
+
+    if (loader) {
+        loader.innerHTML = '';
+        weeklySchedule.forEach(item => {
+            const card = document.createElement('article');
+            card.className = 'day-card';
+            card.innerHTML = `
+                <span>${item.dayCode}</span>
+                <strong>${item.dayName}</strong>
+                <p>${item.trainingType}</p>
+            `;
+            loader.appendChild(card);
+        });
+    }
+
+    const currentCountElement = document.getElementById('meter-current-count');
+    const goalCountElement = document.getElementById('meter-goal-count');
+    const gaugeBarFill = document.getElementById('gauge-bar-fill');
+    const gaugeBarThumb = document.getElementById('gauge-bar-thumb');
+
+    if (currentCountElement) {
+        currentCountElement.textContent = `${weeklyComparison.currentWeekCount}x`;
+    }
+
+    if (goalCountElement) {
+        goalCountElement.textContent = `${weeklyComparison.goalCount}x`;
+    }
+
+    if (gaugeBarFill && gaugeBarThumb) {
+        const ratio = Math.min(1, weeklyComparison.currentWeekCount / weeklyComparison.goalCount);
+        const percentage = Math.round(ratio * 100);
+        gaugeBarFill.style.width = `${percentage}%`;
+        gaugeBarThumb.style.left = `${percentage}%`;
+    }
 }
 
 function renderWorkoutList() {

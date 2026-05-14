@@ -21,3 +21,21 @@ const initialWorkouts = [
         completed: true
     }
 ];
+
+const userProfile = {
+    displayName: 'Camila'
+};
+
+const weeklySchedule = [
+    { dayCode: 'Seg', dayName: 'Segunda', trainingType: 'Força' },
+    { dayCode: 'Ter', dayName: 'Terça', trainingType: 'Cardio' },
+    { dayCode: 'Qua', dayName: 'Quarta', trainingType: 'Mobilidade' },
+    { dayCode: 'Qui', dayName: 'Quinta', trainingType: 'Força' },
+    { dayCode: 'Sex', dayName: 'Sexta', trainingType: 'Treino HIIT' }
+];
+
+const weeklyComparison = {
+    currentWeekCount: 5,
+    previousWeekCount: 3,
+    goalCount: 7
+};
