@@ -1,6 +1,6 @@
-# Oranji Fitness
+# Orenji Fitness
 
-Oranji Fitness é a tua aplicação pessoal para organizar treinos, acompanhar o progresso e manter uma rotina saudável.
+Orenji Fitness é a tua aplicação pessoal para organizar treinos, acompanhar o progresso e manter uma rotina saudável.
 
 - Desenvolvedor: fallen_alex
 - Versão: 1.0.0
