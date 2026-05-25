@@ -13,7 +13,7 @@
         <div class="container header-row">
             <a class="brand" href="index.html">Oranji Fitness</a>
             <nav>
-                <a href="início.html">Início</a>
+                <a href="inicio.html">Início</a>
                 <a href="treinos.html">Treinos</a>
                 <a href="resumo.html">Resumo</a>
                 <a href="Menu.html">Menu</a>
@@ -35,49 +35,131 @@
                     <p>Personaliza a paleta de cores da aplicação conforme a tua preferência.</p>
                 </div>
 
-                <div class="color-picker-group">
-                    <label for="primary-color">Cor primária</label>
-                    <div class="color-input-wrapper">
-                        <input type="color" id="primary-color" value="#5b96ff" class="color-input">
-                        <span id="primary-value" class="color-value">#5b96ff</span>
+                <div class="settings-mode-toggle" aria-label="Modo de personalização">
+                    <button type="button" class="mode-button active" data-mode="basic">Básico</button>
+                    <button type="button" class="mode-button" data-mode="advanced">Avançado</button>
+                </div>
+
+                <div class="settings-panel active" id="basic-panel">
+                    <div class="preset-grid">
+                        <button type="button" class="theme-preset" data-theme="ocean">
+                            <span class="preset-swatch ocean-swatch"></span>
+                            <strong>Oceano</strong>
+                            <span>Azul profundo</span>
+                        </button>
+                        <button type="button" class="theme-preset" data-theme="energy">
+                            <span class="preset-swatch energy-swatch"></span>
+                            <strong>Energia</strong>
+                            <span>Laranja quente</span>
+                        </button>
+                        <button type="button" class="theme-preset" data-theme="forest">
+                            <span class="preset-swatch forest-swatch"></span>
+                            <strong>Floresta</strong>
+                            <span>Verde natural</span>
+                        </button>
+                        <button type="button" class="theme-preset" data-theme="berry">
+                            <span class="preset-swatch berry-swatch"></span>
+                            <strong>Berry</strong>
+                            <span>Roxo vibrante</span>
+                        </button>
+                        <button type="button" class="theme-preset" data-theme="sunrise">
+                            <span class="preset-swatch sunrise-swatch"></span>
+                            <strong>Amanhecer</strong>
+                            <span>Fundo claro</span>
+                        </button>
+                        <button type="button" class="theme-preset" data-theme="mint">
+                            <span class="preset-swatch mint-swatch"></span>
+                            <strong>Menta</strong>
+                            <span>Leve e fresco</span>
+                        </button>
                     </div>
                 </div>
 
-                <div class="color-picker-group">
-                    <label for="primary-strong-color">Cor primária forte</label>
-                    <div class="color-input-wrapper">
-                        <input type="color" id="primary-strong-color" value="#3b82f6" class="color-input">
-                        <span id="primary-strong-value" class="color-value">#3b82f6</span>
+                <div class="texture-group">
+                    <h3>Textura da interface</h3>
+                    <div class="texture-options" aria-label="Textura da interface">
+                        <button type="button" class="texture-button active" data-texture="glass">
+                            <strong>Vidro</strong>
+                            <span>Mais leve</span>
+                        </button>
+                        <button type="button" class="texture-button" data-texture="soft">
+                            <strong>Suave</strong>
+                            <span>Equilibrada</span>
+                        </button>
+                        <button type="button" class="texture-button" data-texture="solid">
+                            <strong>Sólida</strong>
+                            <span>Mais opaca</span>
+                        </button>
                     </div>
                 </div>
 
-                <div class="color-picker-group">
-                    <label for="accent-color">Cor de destaque</label>
-                    <div class="color-input-wrapper">
-                        <input type="color" id="accent-color" value="#22c55e" class="color-input">
-                        <span id="accent-value" class="color-value">#22c55e</span>
+                <div class="settings-panel" id="advanced-panel" hidden>
+                    <div class="color-picker-group">
+                        <label for="background-color">Fundo da app</label>
+                        <div class="color-input-wrapper">
+                            <input type="color" id="background-color" value="#020617" class="color-input">
+                            <span id="background-value" class="color-value">#020617</span>
+                        </div>
+                    </div>
+
+                    <div class="color-picker-group">
+                        <label for="header-color">Barra superior</label>
+                        <div class="color-input-wrapper">
+                            <input type="color" id="header-color" value="#0f172a" class="color-input">
+                            <span id="header-value" class="color-value">#0f172a</span>
+                        </div>
+                    </div>
+
+                    <div class="color-picker-group">
+                        <label for="primary-color">Cor primária</label>
+                        <div class="color-input-wrapper">
+                            <input type="color" id="primary-color" value="#5b96ff" class="color-input">
+                            <span id="primary-value" class="color-value">#5b96ff</span>
+                        </div>
+                    </div>
+
+                    <div class="color-picker-group">
+                        <label for="primary-strong-color">Cor primária forte</label>
+                        <div class="color-input-wrapper">
+                            <input type="color" id="primary-strong-color" value="#3b82f6" class="color-input">
+                            <span id="primary-strong-value" class="color-value">#3b82f6</span>
+                        </div>
+                    </div>
+
+                    <div class="color-picker-group">
+                        <label for="accent-color">Cor de destaque</label>
+                        <div class="color-input-wrapper">
+                            <input type="color" id="accent-color" value="#22c55e" class="color-input">
+                            <span id="accent-value" class="color-value">#22c55e</span>
+                        </div>
+                    </div>
+
+                    <div class="color-picker-group">
+                        <label for="danger-color">Cor de atenção</label>
+                        <div class="color-input-wrapper">
+                            <input type="color" id="danger-color" value="#f43f5e" class="color-input">
+                            <span id="danger-value" class="color-value">#f43f5e</span>
+                        </div>
+                    </div>
+
+                    <div class="color-picker-group">
+                        <label for="warning-color">Cor de aviso</label>
+                        <div class="color-input-wrapper">
+                            <input type="color" id="warning-color" value="#facc15" class="color-input">
+                            <span id="warning-value" class="color-value">#facc15</span>
+                        </div>
                     </div>
                 </div>
 
-                <div class="color-picker-group">
-                    <label for="danger-color">Cor de atenção</label>
-                    <div class="color-input-wrapper">
-                        <input type="color" id="danger-color" value="#f43f5e" class="color-input">
-                        <span id="danger-value" class="color-value">#f43f5e</span>
-                    </div>
-                </div>
-
-                <div class="color-picker-group">
-                    <label for="warning-color">Cor de aviso</label>
-                    <div class="color-input-wrapper">
-                        <input type="color" id="warning-color" value="#facc15" class="color-input">
-                        <span id="warning-value" class="color-value">#facc15</span>
-                    </div>
-                </div>
-
-                <div class="color-preview">
+                <div class="color-preview" id="color-preview" hidden>
                     <h3>Prévia das cores</h3>
                     <div class="preview-grid">
+                        <div class="preview-card background-preview">
+                            <span>Fundo</span>
+                        </div>
+                        <div class="preview-card header-preview">
+                            <span>Barra superior</span>
+                        </div>
                         <div class="preview-card primary-preview">
                             <span>Primária</span>
                         </div>
@@ -94,7 +176,7 @@
                 </div>
 
                 <div class="settings-actions">
-                    <button class="button" id="save-colors">Guardar cores</button>
+                    <button class="button" id="save-colors">Guardar tema</button>
                     <button class="button button-secondary" id="reset-colors">Restaurar padrão</button>
                 </div>
             </article>

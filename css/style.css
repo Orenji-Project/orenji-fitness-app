@@ -1,10 +1,13 @@
 /* Estilo principal para Oranji Fitness */
 :root {
-    --background: #0f172a;
+    --background: #020617;
+    --background-end: #0b1120;
     --surface: #111827;
     --surface-alt: #1f2937;
     --text: #e2e8f0;
     --text-muted: #94a3b8;
+    --header-text: #f8fafc;
+    --header-text-muted: #cbd5e1;
     --primary: #5b96ff;
     --primary-strong: #3b82f6;
     --accent: #22c55e;
@@ -15,6 +18,12 @@
     --danger-rgb: 244, 63, 94;
     --warning-rgb: 250, 204, 21;
     --border: rgba(255,255,255,0.08);
+    --border-strong: rgba(255,255,255,0.12);
+    --panel-bg: rgba(255,255,255,0.05);
+    --panel-alt-bg: rgba(255,255,255,0.06);
+    --secondary-bg: rgba(255,255,255,0.08);
+    --header-bg: rgba(15,23,42,0.95);
+    --card-shadow: 0 20px 45px rgba(0,0,0,0.16);
     --radius: 22px;
 }
 
@@ -27,7 +36,7 @@ html, body {
     padding: 0;
     font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     background: radial-gradient(circle at top, rgba(var(--primary-rgb), 0.18), transparent 35%),
-                linear-gradient(180deg, #020617 0%, #0b1120 100%);
+                linear-gradient(180deg, var(--background) 0%, var(--background-end) 100%);
     color: var(--text);
     min-height: 100%;
 }
@@ -55,8 +64,9 @@ a {
     position: sticky;
     top: 0;
     z-index: 20;
-    background: rgba(15,23,42,0.95);
-    border-bottom: 1px solid rgba(255,255,255,0.06);
+    background: var(--header-bg);
+    border-bottom: 1px solid var(--border);
+    color: var(--header-text);
 }
 
 .header-row {
@@ -80,7 +90,7 @@ nav {
 }
 
 nav a {
-    color: var(--text-muted);
+    color: var(--header-text-muted);
     font-size: 0.98rem;
     transition: color 0.2s ease;
 }
@@ -136,8 +146,8 @@ nav a.active {
     display: grid;
     gap: 1.5rem;
     padding: 2rem;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.08);
+    background: var(--panel-bg);
+    border: 1px solid var(--border);
     border-radius: var(--radius);
     margin-bottom: 2rem;
 }
@@ -185,7 +195,7 @@ nav a.active {
 }
 
 .roller::-webkit-scrollbar-thumb {
-    background: rgba(255,255,255,0.16);
+    background: var(--secondary-bg);
     border-radius: 999px;
 }
 
@@ -193,8 +203,8 @@ nav a.active {
     min-width: 180px;
     padding: 1.25rem;
     border-radius: var(--radius);
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.08);
+    background: var(--panel-alt-bg);
+    border: 1px solid var(--border);
     box-shadow: 0 18px 38px rgba(0,0,0,0.15);
 }
 
@@ -223,11 +233,11 @@ nav a.active {
 }
 
 .chart-card {
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.08);
+    background: var(--panel-bg);
+    border: 1px solid var(--border);
     border-radius: var(--radius);
     padding: 1.75rem;
-    box-shadow: 0 20px 45px rgba(0,0,0,0.16);
+    box-shadow: var(--card-shadow);
 }
 
 .gauge-meta {
@@ -266,7 +276,7 @@ nav a.active {
         rgba(var(--danger-rgb), 0.25) 0%,
         rgba(var(--warning-rgb), 0.2) 50%,
         rgba(var(--accent-rgb), 0.25) 100%);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--border);
     overflow: hidden;
 }
 
@@ -341,7 +351,7 @@ nav a.active {
 }
 
 .button-secondary {
-    background: rgba(255,255,255,0.08);
+    background: var(--secondary-bg);
     color: var(--text);
 }
 
@@ -367,11 +377,11 @@ nav a.active {
 .workout-form-card,
 .workout-panel,
 .highlight-card {
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.08);
+    background: var(--panel-bg);
+    border: 1px solid var(--border);
     border-radius: var(--radius);
     padding: 1.75rem;
-    box-shadow: 0 20px 45px rgba(0,0,0,0.16);
+    box-shadow: var(--card-shadow);
 }
 
 .feature-card h2,
@@ -385,7 +395,7 @@ nav a.active {
 
 .highlight-card {
     max-width: 26rem;
-    background: linear-gradient(135deg, rgba(var(--primary-rgb), 0.25), rgba(15,23,42,0.85));
+    background: linear-gradient(135deg, rgba(var(--primary-rgb), 0.25), var(--panel-bg));
 }
 
 .highlight-card span {
@@ -409,8 +419,8 @@ nav a.active {
     gap: 1rem;
     padding: 1rem;
     border-radius: 18px;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.08);
+    background: var(--panel-bg);
+    border: 1px solid var(--border);
 }
 
 .workout-item strong {
@@ -435,8 +445,8 @@ nav a.active {
 .small-button {
     padding: 0.55rem 0.85rem;
     border-radius: 999px;
-    border: 1px solid rgba(255,255,255,0.12);
-    background: rgba(255,255,255,0.06);
+    border: 1px solid var(--border-strong);
+    background: var(--panel-alt-bg);
     color: var(--text);
     cursor: pointer;
 }
@@ -458,8 +468,8 @@ select {
     width: 100%;
     padding: 0.95rem 1rem;
     border-radius: 16px;
-    border: 1px solid rgba(255,255,255,0.12);
-    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border-strong);
+    background: var(--panel-bg);
     color: var(--text);
 }
 
@@ -481,7 +491,7 @@ select:focus {
     width: 100%;
     height: 0.85rem;
     border-radius: 999px;
-    background: rgba(255,255,255,0.08);
+    background: var(--secondary-bg);
     overflow: hidden;
 }
 
@@ -507,7 +517,7 @@ select:focus {
 }
 
 .site-footer {
-    border-top: 1px solid rgba(255,255,255,0.08);
+    border-top: 1px solid var(--border);
     padding: 1.5rem 0;
     margin-top: 2rem;
 }

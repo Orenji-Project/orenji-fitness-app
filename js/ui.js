@@ -74,21 +74,37 @@ function renderWorkoutList() {
     workouts.forEach(workout => {
         const item = document.createElement('article');
         item.className = 'workout-item';
-        item.innerHTML = `
-            <div>
-                <strong>${workout.name}</strong>
-                <div class="workout-meta">
-                    <span>Categoria: ${workout.category}</span>
-                    <span>Duração: ${workout.duration} min</span>
-                    <span>Status: ${workout.completed ? 'Concluído' : 'Pendente'}</span>
-                </div>
-            </div>
-            <div class="workout-actions">
-                <button class="small-button" type="button" onclick="toggleWorkoutStatus(${workout.id})">
-                    ${workout.completed ? 'Marcar como pendente' : 'Marcar como concluído'}
-                </button>
-            </div>
-        `;
+
+        const content = document.createElement('div');
+        const name = document.createElement('strong');
+        name.textContent = workout.name;
+
+        const meta = document.createElement('div');
+        meta.className = 'workout-meta';
+
+        const category = document.createElement('span');
+        category.textContent = `Categoria: ${workout.category}`;
+
+        const duration = document.createElement('span');
+        duration.textContent = `Duração: ${workout.duration} min`;
+
+        const status = document.createElement('span');
+        status.textContent = `Status: ${workout.completed ? 'Concluído' : 'Pendente'}`;
+
+        meta.append(category, duration, status);
+        content.append(name, meta);
+
+        const actions = document.createElement('div');
+        actions.className = 'workout-actions';
+
+        const toggleButton = document.createElement('button');
+        toggleButton.className = 'small-button';
+        toggleButton.type = 'button';
+        toggleButton.textContent = workout.completed ? 'Marcar como pendente' : 'Marcar como concluído';
+        toggleButton.addEventListener('click', () => toggleWorkoutStatus(workout.id));
+
+        actions.appendChild(toggleButton);
+        item.append(content, actions);
         list.appendChild(item);
     });
 
