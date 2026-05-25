@@ -1,14 +1,6 @@
-const DEFAULT_COLORS = {
-    primary: '#5b96ff',
-    accent: '#22c55e',
-    danger: '#f43f5e',
-    warning: '#facc15'
-};
-
-const STORAGE_KEY = 'fitnessapp.colors';
-
 function initSettings() {
     const primaryInput = document.getElementById('primary-color');
+    const primaryStrongInput = document.getElementById('primary-strong-color');
     const accentInput = document.getElementById('accent-color');
     const dangerInput = document.getElementById('danger-color');
     const warningInput = document.getElementById('warning-color');
@@ -16,17 +8,22 @@ function initSettings() {
     const resetBtn = document.getElementById('reset-colors');
 
     // Load saved colors or defaults
-    const savedColors = loadColors();
+    const savedColors = loadThemeColors();
     primaryInput.value = savedColors.primary;
+    primaryStrongInput.value = savedColors.primaryStrong;
     accentInput.value = savedColors.accent;
     dangerInput.value = savedColors.danger;
     warningInput.value = savedColors.warning;
 
     updateColorValues();
-    applyColors(savedColors);
+    applyThemeColors(savedColors);
 
     // Event listeners for real-time preview
     primaryInput.addEventListener('input', () => {
+        updateColorValues();
+        updatePreview();
+    });
+    primaryStrongInput.addEventListener('input', () => {
         updateColorValues();
         updatePreview();
     });
@@ -49,11 +46,13 @@ function initSettings() {
 
 function updateColorValues() {
     const primaryInput = document.getElementById('primary-color');
+    const primaryStrongInput = document.getElementById('primary-strong-color');
     const accentInput = document.getElementById('accent-color');
     const dangerInput = document.getElementById('danger-color');
     const warningInput = document.getElementById('warning-color');
 
     document.getElementById('primary-value').textContent = primaryInput.value;
+    document.getElementById('primary-strong-value').textContent = primaryStrongInput.value;
     document.getElementById('accent-value').textContent = accentInput.value;
     document.getElementById('danger-value').textContent = dangerInput.value;
     document.getElementById('warning-value').textContent = warningInput.value;
@@ -61,6 +60,7 @@ function updateColorValues() {
 
 function updatePreview() {
     const primaryInput = document.getElementById('primary-color');
+    const primaryStrongInput = document.getElementById('primary-strong-color');
     const accentInput = document.getElementById('accent-color');
     const dangerInput = document.getElementById('danger-color');
     const warningInput = document.getElementById('warning-color');
@@ -71,7 +71,7 @@ function updatePreview() {
     const warningPreview = document.querySelector('.warning-preview');
 
     if (primaryPreview) {
-        primaryPreview.style.background = `linear-gradient(135deg, ${primaryInput.value}, ${primaryInput.value})`;
+        primaryPreview.style.background = `linear-gradient(135deg, ${primaryInput.value}, ${primaryStrongInput.value})`;
     }
     if (accentPreview) {
         accentPreview.style.background = accentInput.value;
@@ -82,23 +82,15 @@ function updatePreview() {
     if (warningPreview) {
         warningPreview.style.background = warningInput.value;
     }
+
+    applyThemeColors(getSelectedColors());
 }
 
 function handleSaveColors() {
-    const primaryInput = document.getElementById('primary-color');
-    const accentInput = document.getElementById('accent-color');
-    const dangerInput = document.getElementById('danger-color');
-    const warningInput = document.getElementById('warning-color');
+    const colors = getSelectedColors();
 
-    const colors = {
-        primary: primaryInput.value,
-        accent: accentInput.value,
-        danger: dangerInput.value,
-        warning: warningInput.value
-    };
-
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(colors));
-    applyColors(colors);
+    saveThemeColors(colors);
+    applyThemeColors(colors);
 
     // Show success feedback
     const saveBtn = document.getElementById('save-colors');
@@ -110,32 +102,25 @@ function handleSaveColors() {
 }
 
 function handleResetColors() {
-    document.getElementById('primary-color').value = DEFAULT_COLORS.primary;
-    document.getElementById('accent-color').value = DEFAULT_COLORS.accent;
-    document.getElementById('danger-color').value = DEFAULT_COLORS.danger;
-    document.getElementById('warning-color').value = DEFAULT_COLORS.warning;
+    document.getElementById('primary-color').value = THEME_DEFAULT_COLORS.primary;
+    document.getElementById('primary-strong-color').value = THEME_DEFAULT_COLORS.primaryStrong;
+    document.getElementById('accent-color').value = THEME_DEFAULT_COLORS.accent;
+    document.getElementById('danger-color').value = THEME_DEFAULT_COLORS.danger;
+    document.getElementById('warning-color').value = THEME_DEFAULT_COLORS.warning;
 
-    localStorage.removeItem(STORAGE_KEY);
+    resetThemeColors();
     updateColorValues();
     updatePreview();
-    applyColors(DEFAULT_COLORS);
 }
 
-function loadColors() {
-    const stored = localStorage.getItem(STORAGE_KEY);
-    if (stored) {
-        try {
-            return JSON.parse(stored);
-        } catch (e) {
-            return DEFAULT_COLORS;
-        }
-    }
-    return DEFAULT_COLORS;
-}
-
-function applyColors(colors) {
-    document.documentElement.style.setProperty('--primary', colors.primary);
-    document.documentElement.style.setProperty('--accent', colors.accent);
+function getSelectedColors() {
+    return {
+        primary: document.getElementById('primary-color').value,
+        primaryStrong: document.getElementById('primary-strong-color').value,
+        accent: document.getElementById('accent-color').value,
+        danger: document.getElementById('danger-color').value,
+        warning: document.getElementById('warning-color').value
+    };
 }
 
 window.addEventListener('DOMContentLoaded', initSettings);

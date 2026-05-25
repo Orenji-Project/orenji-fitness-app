@@ -116,11 +116,11 @@
 }
 
 .danger-preview {
-    background: #f43f5e;
+    background: var(--danger);
 }
 
 .warning-preview {
-    background: #facc15;
+    background: var(--warning);
     color: #0f172a;
 }
 
