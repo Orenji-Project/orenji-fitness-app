@@ -15,7 +15,6 @@
                 <a href="inicio.html">Início</a>
                 <a href="treinos.html">Treinos</a>
                 <a href="resumo.html">Resumo</a>
-                <a href="Menu.html">Menu</a>
                 <a href="configuracoes.html">Configurações</a>
             </nav>
         </div>
@@ -24,9 +23,9 @@
     <main class="container page-section">
         <section class="welcome-card">
             <div class="welcome-copy">
-                <p class="welcome-salutation">Olá, <span id="user-name">Camila</span> 👋</p>
-                <h1>Pronta para transformar seu treino hoje?</h1>
-                <p class="motivational-text">Cada treino te aproxima do próximo nível. Vamos fazer dessa semana o começo de uma nova rotina.</p>
+                <p class="welcome-salutation">Olá, <span id="user-name">"Name_here"</span> 👋</p>
+                <h1>Pronto(a) para o treino de Hoje?</h1>
+                <p class="motivational-text">Cada treino te aproxima de um fisico e saude ideais. Vamos dar mais um passo rumo a esse objetivo!</p>
                 <div class="hero-actions">
                     <a class="button" href="treinos.html">Ver treinos</a>
                     <a class="button button-secondary" href="resumo.html">Ver resumo</a>
@@ -45,31 +44,15 @@
         <section class="chart-section">
             <div class="section-header">
                 <h2>Condicionamento físico</h2>
-                <p>Um indicador do teu progresso: quanto mais treinos, mais perto do verde.</p>
+                <p>Acompanha a semana treino a treino e vê o que já ficou feito.</p>
             </div>
             <article class="chart-card">
-                <div class="fitness-gauge" id="fitness-gauge">
-                    <div class="gauge-meta">
-                        <div>
-                            <span class="meter-title">Semana passada</span>
-                            <strong id="meter-current-count">0x</strong>
-                        </div>
-                        <div>
-                            <span class="meter-title">Meta</span>
-                            <strong id="meter-goal-count">0x</strong>
-                        </div>
+                <div class="conditioning-week" id="conditioning-week">
+                    <div class="conditioning-header">
+                        <span class="meter-title">Semana 1</span>
+                        <strong id="conditioning-score">0/7</strong>
                     </div>
-                    <div class="bar-gauge">
-                        <div class="gauge-bar-track">
-                            <div class="gauge-bar-fill" id="gauge-bar-fill"></div>
-                            <div class="gauge-bar-thumb" id="gauge-bar-thumb"></div>
-                        </div>
-                    </div>
-                    <div class="gauge-labels">
-                        <span>Baixa carga</span>
-                        <span>Carga normal</span>
-                        <span>Treino elevado</span>
-                    </div>
+                    <div class="conditioning-grid" id="conditioning-grid"></div>
                 </div>
             </article>
         </section>

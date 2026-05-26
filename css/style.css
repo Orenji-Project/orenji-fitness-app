@@ -200,8 +200,11 @@ nav a.active {
 }
 
 .day-card {
+    position: relative;
     min-width: 180px;
-    padding: 1.25rem;
+    min-height: 160px;
+    margin-top: 2.9rem;
+    padding: 4rem 1.25rem 1.25rem;
     border-radius: var(--radius);
     background: var(--panel-alt-bg);
     border: 1px solid var(--border);
@@ -214,16 +217,43 @@ nav a.active {
     margin: 0.75rem 0 0.5rem;
 }
 
-.day-card span {
+.day-card-visual {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 2.75rem;
-    height: 2.75rem;
+    position: absolute;
+    top: -2.75rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 5.5rem;
+    height: 5.5rem;
     border-radius: 999px;
-    background: rgba(var(--primary-rgb), 0.16);
+    background: var(--panel-alt-bg);
+    border: 1px solid var(--border);
     color: var(--primary);
     font-weight: 700;
+    font-size: 1.05rem;
+    box-shadow: 0 14px 30px rgba(0,0,0,0.16);
+}
+
+.day-card-visual::before {
+    content: "";
+    position: absolute;
+    inset: 0.75rem;
+    border-radius: 999px;
+    background: rgba(var(--primary-rgb), 0.12);
+}
+
+.training-svg {
+    position: relative;
+    z-index: 1;
+    width: 3.15rem;
+    height: 3.15rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2.45;
+    stroke-linecap: round;
+    stroke-linejoin: round;
 }
 
 .bar-group {
@@ -240,23 +270,6 @@ nav a.active {
     box-shadow: var(--card-shadow);
 }
 
-.gauge-meta {
-    display: flex;
-    justify-content: space-between;
-    gap: 1rem;
-    flex-wrap: wrap;
-    margin-bottom: 2rem;
-}
-
-.gauge-meta div {
-    min-width: 160px;
-}
-
-.gauge-meta strong {
-    font-size: 1.8rem;
-    color: var(--primary);
-}
-
 .meter-title {
     display: block;
     color: var(--text-muted);
@@ -264,71 +277,67 @@ nav a.active {
     font-size: 0.95rem;
 }
 
-.bar-gauge {
-    margin: 2rem 0 1rem;
-}
-
-.gauge-bar-track {
-    position: relative;
-    height: 2rem;
-    border-radius: 999px;
-    background: linear-gradient(90deg,
-        rgba(var(--danger-rgb), 0.25) 0%,
-        rgba(var(--warning-rgb), 0.2) 50%,
-        rgba(var(--accent-rgb), 0.25) 100%);
-    border: 1px solid var(--border);
-    overflow: hidden;
-}
-
-.gauge-bar-fill {
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    border-radius: 999px;
-    background: linear-gradient(90deg,
-        var(--danger) 0%,
-        #fb923c 35%,
-        var(--warning) 50%,
-        #a3e635 75%,
-        var(--accent) 100%);
-    transition: width 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    box-shadow: 0 0 20px rgba(var(--accent-rgb), 0.3);
-}
-
-.gauge-bar-thumb {
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 2.2rem;
-    height: 2.2rem;
-    border-radius: 50%;
-    background: white;
-    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.15),
-                0 4px 12px rgba(0, 0, 0, 0.4);
-    transition: left 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    z-index: 5;
-}
-
-.gauge-labels {
+.conditioning-week {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+}
+
+.conditioning-header {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
     gap: 1rem;
-    margin-top: 1rem;
-    color: var(--text-muted);
-    font-size: 0.85rem;
-    text-align: center;
 }
 
+.conditioning-header strong {
+    color: var(--primary);
+    font-size: 1.75rem;
+}
 
-
-.gauge-scale {
+.conditioning-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(7, minmax(2.75rem, 1fr));
+    gap: 0.75rem;
+}
+
+.conditioning-day {
+    display: grid;
+    gap: 0.45rem;
+    justify-items: center;
+}
+
+.conditioning-day-label {
     color: var(--text-muted);
     font-size: 0.85rem;
-    margin-top: 0.75rem;
+    font-weight: 700;
+}
+
+.conditioning-cell {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1;
+    min-width: 2.75rem;
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    background: var(--panel-alt-bg);
+    color: var(--text-muted);
+    font-size: clamp(1.35rem, 3vw, 2rem);
+    font-weight: 800;
+    line-height: 1;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.1);
+}
+
+.conditioning-cell.completed {
+    background: rgba(34, 197, 94, 0.18);
+    border-color: rgba(34, 197, 94, 0.46);
+    color: #22c55e;
+}
+
+.conditioning-cell.missed {
+    background: rgba(var(--danger-rgb), 0.14);
+    border-color: rgba(var(--danger-rgb), 0.36);
+    color: var(--danger);
 }
 
 .button {
@@ -357,7 +366,6 @@ nav a.active {
 
 .features-section,
 .stats-grid,
-.menu-grid,
 .progress-list,
 .workout-grid {
     display: grid;
@@ -371,7 +379,6 @@ nav a.active {
 
 .feature-card,
 .stat-card,
-.menu-card,
 .progress-card,
 .intro-card,
 .workout-form-card,
@@ -385,7 +392,6 @@ nav a.active {
 }
 
 .feature-card h2,
-.menu-card h2,
 .stat-card h3,
 .progress-card h3,
 .workout-panel h2,
@@ -508,14 +514,6 @@ select:focus {
     margin-bottom: 2rem;
 }
 
-.menu-grid {
-    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-}
-
-.menu-card h2 {
-    margin-bottom: 0.75rem;
-}
-
 .site-footer {
     border-top: 1px solid var(--border);
     padding: 1.5rem 0;
@@ -552,5 +550,9 @@ select:focus {
     .page-header,
     .summary-header {
         gap: 0.75rem;
+    }
+
+    .conditioning-grid {
+        grid-template-columns: repeat(4, minmax(2.5rem, 1fr));
     }
 }
