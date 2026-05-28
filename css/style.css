@@ -73,25 +73,38 @@ a {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 1rem;
-    padding: 1rem 0;
+    gap: 1.5rem;
+    min-height: 5rem;
+    padding: 1.2rem 0;
 }
 
 .brand {
-    font-size: 1.35rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 1.55rem;
     font-weight: 700;
-    letter-spacing: -0.04em;
+    letter-spacing: 0;
+}
+
+.brand-logo {
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 0 0 2px var(--border);
 }
 
 nav {
     display: flex;
     flex-wrap: wrap;
-    gap: 1rem;
+    gap: 1.1rem;
 }
 
 nav a {
     color: var(--header-text-muted);
-    font-size: 0.98rem;
+    font-size: 1.02rem;
+    padding: 0.45rem 0.15rem;
     transition: color 0.2s ease;
 }
 
@@ -279,7 +292,7 @@ nav a.active {
 
 .conditioning-week {
     display: grid;
-    gap: 1.25rem;
+    gap: 1rem;
 }
 
 .conditioning-header {
@@ -295,15 +308,37 @@ nav a.active {
 }
 
 .conditioning-grid {
+    position: relative;
     display: grid;
-    grid-template-columns: repeat(7, minmax(2.75rem, 1fr));
+    grid-template-columns: repeat(7, minmax(3rem, 1fr));
     gap: 0.75rem;
+    padding-top: 1.5rem;
+}
+
+.conditioning-grid::before {
+    content: "";
+    position: absolute;
+    top: 0.05rem;
+    left: calc(100% / 14);
+    right: calc(100% / 14);
+    height: 1px;
+    background: var(--border-strong);
 }
 
 .conditioning-day {
+    position: relative;
     display: grid;
     gap: 0.45rem;
     justify-items: center;
+}
+
+.conditioning-day::before {
+    content: "";
+    position: absolute;
+    top: -1.5rem;
+    width: 1px;
+    height: 1.5rem;
+    background: var(--border-strong);
 }
 
 .conditioning-day-label {
@@ -317,15 +352,16 @@ nav a.active {
     align-items: center;
     justify-content: center;
     aspect-ratio: 1;
-    min-width: 2.75rem;
-    border-radius: 16px;
+    width: min(4.25rem, 100%);
+    min-width: 3rem;
+    border-radius: 18px;
     border: 1px solid var(--border);
     background: var(--panel-alt-bg);
     color: var(--text-muted);
-    font-size: clamp(1.35rem, 3vw, 2rem);
+    font-size: clamp(1.25rem, 2.6vw, 1.8rem);
     font-weight: 800;
     line-height: 1;
-    box-shadow: 0 14px 28px rgba(0,0,0,0.1);
+    box-shadow: var(--card-shadow);
 }
 
 .conditioning-cell.completed {
@@ -539,6 +575,8 @@ select:focus {
     .header-row {
         flex-direction: column;
         align-items: flex-start;
+        gap: 0.9rem;
+        padding: 1rem 0;
     }
 
     nav {
