@@ -16,7 +16,7 @@
 
 .settings-grid {
     display: grid;
-    gap: 2rem;
+    gap: var(--grid-gap);
     grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
 }
 
@@ -24,7 +24,7 @@
     background: var(--panel-bg);
     border: 1px solid var(--border);
     border-radius: var(--radius);
-    padding: 2rem;
+    padding: var(--card-padding);
     box-shadow: var(--card-shadow);
 }
 
@@ -50,14 +50,14 @@
     padding: 0.35rem;
     margin-bottom: 1.5rem;
     border: 1px solid var(--border);
-    border-radius: 16px;
+    border-radius: var(--radius);
     background: var(--secondary-bg);
 }
 
 .mode-button {
     border: none;
-    border-radius: 12px;
-    padding: 0.85rem 1rem;
+    border-radius: calc(var(--radius) * 0.65);
+    padding: var(--control-padding);
     background: transparent;
     color: var(--text-muted);
     font-weight: 700;
@@ -79,7 +79,7 @@
 
 .preset-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(155px, 1fr));
     gap: 0.85rem;
 }
 
@@ -89,7 +89,7 @@
     min-height: 9rem;
     padding: 1rem;
     border: 1px solid var(--border);
-    border-radius: 16px;
+    border-radius: var(--radius);
     background: var(--panel-alt-bg);
     color: var(--text);
     text-align: left;
@@ -108,13 +108,33 @@
     font-size: 0.9rem;
 }
 
+.featured-preset {
+    grid-column: span 2;
+}
+
 .preset-swatch {
     display: block;
     width: 100%;
     height: 3.25rem;
-    border-radius: 12px;
+    border-radius: calc(var(--radius) * 0.65);
     margin-bottom: 0.35rem;
     border: 1px solid var(--border);
+    overflow: hidden;
+}
+
+.image-swatch {
+    height: 4.5rem;
+    background: #f7f4e9;
+}
+
+.image-swatch img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.orenji-dark-swatch {
+    background: linear-gradient(135deg, #15110c, #ff9f2f 65%, #8bbf5a);
 }
 
 .ocean-swatch {
@@ -141,39 +161,55 @@
     background: linear-gradient(135deg, #ecfeff, #14b8a6);
 }
 
-.texture-group {
+.graphite-swatch {
+    background: linear-gradient(135deg, #101214, #f2f4f8);
+}
+
+.citrus-swatch {
+    background: linear-gradient(135deg, #14210f, #d9f99d 55%, #fb923c);
+}
+
+.rose-swatch {
+    background: linear-gradient(135deg, #fff1f2, #fb7185);
+}
+
+.slate-swatch {
+    background: linear-gradient(135deg, #e2e8f0, #334155);
+}
+
+.appearance-group {
     margin-top: 1.5rem;
 }
 
-.texture-group h3 {
+.appearance-group h3 {
     margin: 0 0 0.85rem;
     font-size: 1.05rem;
 }
 
-.texture-options {
+.appearance-options {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 0.75rem;
 }
 
-.texture-button {
+.appearance-button {
     display: grid;
     gap: 0.25rem;
     padding: 0.95rem;
     border: 1px solid var(--border);
-    border-radius: 14px;
+    border-radius: calc(var(--radius) * 0.75);
     background: var(--panel-alt-bg);
     color: var(--text);
     text-align: left;
     cursor: pointer;
 }
 
-.texture-button.active {
+.appearance-button.active {
     border-color: var(--primary);
     box-shadow: inset 0 0 0 1px var(--primary);
 }
 
-.texture-button span {
+.appearance-button span {
     color: var(--text-muted);
     font-size: 0.88rem;
 }
@@ -191,7 +227,7 @@
 
 .color-input-wrapper {
     display: flex;
-    gap: 0.75rem;
+    gap: var(--grid-gap);
     align-items: center;
 }
 
@@ -199,7 +235,7 @@
     width: 3.5rem;
     height: 3.5rem;
     border: none;
-    border-radius: 12px;
+    border-radius: calc(var(--radius) * 0.65);
     cursor: pointer;
 }
 
@@ -228,7 +264,7 @@
 
 .preview-card {
     padding: 1.5rem;
-    border-radius: 16px;
+    border-radius: var(--radius);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -273,7 +309,7 @@
 
 .settings-actions {
     display: flex;
-    gap: 1rem;
+    gap: var(--grid-gap);
     margin-top: 2rem;
 }
 
@@ -283,7 +319,7 @@
 
 .settings-info {
     display: grid;
-    gap: 1.25rem;
+    gap: var(--grid-gap);
     margin-bottom: 1.5rem;
 }
 
@@ -312,7 +348,7 @@
 .settings-description {
     padding: 1.25rem;
     background: var(--panel-bg);
-    border-radius: 12px;
+    border-radius: calc(var(--radius) * 0.65);
     border-left: 3px solid var(--primary);
 }
 
@@ -331,8 +367,12 @@
         grid-template-columns: 1fr;
     }
 
-    .texture-options {
+    .appearance-options {
         grid-template-columns: 1fr;
+    }
+
+    .featured-preset {
+        grid-column: span 1;
     }
 
     .info-item {

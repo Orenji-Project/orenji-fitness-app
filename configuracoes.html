@@ -5,8 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Orenji Fitness • Configurações</title>
     <link rel="icon" href="assets/logo.png" type="image/png">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/settings.css">
+    <link rel="stylesheet" href="../Orenji%20core/css/variables.css">
+    <link rel="stylesheet" href="../Orenji%20core/css/core.css">
+    <link rel="stylesheet" href="../Orenji%20core/css/layout.css">
+    <link rel="stylesheet" href="../Orenji%20core/css/components.css">
+    <link rel="stylesheet" href="../Orenji%20core/css/themes.css">
+    <link rel="stylesheet" href="../Orenji%20core/css/animations.css">
+    <link rel="stylesheet" href="css/app.css">
 </head>
 <body>
     <header class="main-header">
@@ -44,6 +49,18 @@
 
                 <div class="settings-panel active" id="basic-panel">
                     <div class="preset-grid">
+                        <button type="button" class="theme-preset featured-preset" data-theme="orenji">
+                            <span class="preset-swatch image-swatch">
+                                <img src="assets/theme-orenji.jpeg" alt="">
+                            </span>
+                            <strong>Orenji</strong>
+                            <span>Marca clara</span>
+                        </button>
+                        <button type="button" class="theme-preset" data-theme="orenjiDark">
+                            <span class="preset-swatch orenji-dark-swatch"></span>
+                            <strong>Orenji Dark</strong>
+                            <span>Laranja noturno</span>
+                        </button>
                         <button type="button" class="theme-preset" data-theme="ocean">
                             <span class="preset-swatch ocean-swatch"></span>
                             <strong>Oceano</strong>
@@ -74,23 +91,97 @@
                             <strong>Menta</strong>
                             <span>Leve e fresco</span>
                         </button>
+                        <button type="button" class="theme-preset" data-theme="graphite">
+                            <span class="preset-swatch graphite-swatch"></span>
+                            <strong>Graphite</strong>
+                            <span>Neutro focado</span>
+                        </button>
+                        <button type="button" class="theme-preset" data-theme="citrus">
+                            <span class="preset-swatch citrus-swatch"></span>
+                            <strong>Citrus</strong>
+                            <span>Verde elétrico</span>
+                        </button>
+                        <button type="button" class="theme-preset" data-theme="rose">
+                            <span class="preset-swatch rose-swatch"></span>
+                            <strong>Rose</strong>
+                            <span>Claro vibrante</span>
+                        </button>
+                        <button type="button" class="theme-preset" data-theme="slate">
+                            <span class="preset-swatch slate-swatch"></span>
+                            <strong>Slate</strong>
+                            <span>Calmo e limpo</span>
+                        </button>
                     </div>
                 </div>
 
-                <div class="texture-group">
+                <div class="appearance-group">
                     <h3>Textura da interface</h3>
-                    <div class="texture-options" aria-label="Textura da interface">
-                        <button type="button" class="texture-button active" data-texture="glass">
+                    <div class="appearance-options" aria-label="Textura da interface">
+                        <button type="button" class="appearance-button active" data-option="texture" data-value="glass">
                             <strong>Vidro</strong>
                             <span>Mais leve</span>
                         </button>
-                        <button type="button" class="texture-button" data-texture="soft">
+                        <button type="button" class="appearance-button" data-option="texture" data-value="soft">
                             <strong>Suave</strong>
                             <span>Equilibrada</span>
                         </button>
-                        <button type="button" class="texture-button" data-texture="solid">
+                        <button type="button" class="appearance-button" data-option="texture" data-value="solid">
                             <strong>Sólida</strong>
                             <span>Mais opaca</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="appearance-group">
+                    <h3>Forma dos cartões</h3>
+                    <div class="appearance-options" aria-label="Forma dos cartões">
+                        <button type="button" class="appearance-button active" data-option="shape" data-value="rounded">
+                            <strong>Redonda</strong>
+                            <span>Mais orgânica</span>
+                        </button>
+                        <button type="button" class="appearance-button" data-option="shape" data-value="soft">
+                            <strong>Suave</strong>
+                            <span>Equilibrada</span>
+                        </button>
+                        <button type="button" class="appearance-button" data-option="shape" data-value="square">
+                            <strong>Reta</strong>
+                            <span>Mais técnica</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="appearance-group">
+                    <h3>Sombra</h3>
+                    <div class="appearance-options" aria-label="Sombra">
+                        <button type="button" class="appearance-button" data-option="shadow" data-value="none">
+                            <strong>Nenhuma</strong>
+                            <span>Plano</span>
+                        </button>
+                        <button type="button" class="appearance-button active" data-option="shadow" data-value="soft">
+                            <strong>Suave</strong>
+                            <span>Discreta</span>
+                        </button>
+                        <button type="button" class="appearance-button" data-option="shadow" data-value="deep">
+                            <strong>Profunda</strong>
+                            <span>Mais relevo</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="appearance-group">
+                    <h3>Densidade</h3>
+                    <div class="appearance-options" aria-label="Densidade">
+                        <button type="button" class="appearance-button" data-option="density" data-value="compact">
+                            <strong>Compacta</strong>
+                            <span>Mais dados</span>
+                        </button>
+                        <button type="button" class="appearance-button active" data-option="density" data-value="comfortable">
+                            <strong>Confortável</strong>
+                            <span>Padrão</span>
+                        </button>
+                        <button type="button" class="appearance-button" data-option="density" data-value="spacious">
+                            <strong>Espaçosa</strong>
+                            <span>Mais ar</span>
                         </button>
                     </div>
                 </div>
@@ -218,7 +309,7 @@
         </div>
     </footer>
 
-    <script src="js/theme.js"></script>
+    <script src="../Orenji%20core/js/theme.js"></script>
     <script src="js/settings.js"></script>
 </body>
 </html>

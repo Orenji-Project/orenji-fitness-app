@@ -5,7 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Orenji Fitness • Treinos</title>
     <link rel="icon" href="assets/logo.png" type="image/png">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../Orenji%20core/css/variables.css">
+    <link rel="stylesheet" href="../Orenji%20core/css/core.css">
+    <link rel="stylesheet" href="../Orenji%20core/css/layout.css">
+    <link rel="stylesheet" href="../Orenji%20core/css/components.css">
+    <link rel="stylesheet" href="../Orenji%20core/css/themes.css">
+    <link rel="stylesheet" href="../Orenji%20core/css/animations.css">
+    <link rel="stylesheet" href="css/app.css">
 </head>
 <body>
     <header class="main-header">
@@ -29,36 +35,6 @@
             <p>Adiciona, acompanha e atualiza as tuas sessões de treino.</p>
         </section>
 
-        <section class="workout-grid">
-            <div class="workout-panel">
-                <div class="panel-header">
-                    <h2>Treinos registados</h2>
-                    <span id="workout-count">0</span>
-                </div>
-                <div id="workout-list" class="workout-list"></div>
-            </div>
-
-            <aside class="workout-form-card">
-                <h2>Novo treino</h2>
-                <form id="workout-form">
-                    <label for="workout-name">Nome do treino</label>
-                    <input type="text" id="workout-name" placeholder="Ex: Pernas" required>
-
-                    <label for="workout-category">Categoria</label>
-                    <select id="workout-category">
-                        <option value="Cardio">Cardio</option>
-                        <option value="Força">Força</option>
-                        <option value="Mobilidade">Mobilidade</option>
-                        <option value="Alongamento">Alongamento</option>
-                    </select>
-
-                    <label for="workout-duration">Duração (min)</label>
-                    <input type="number" id="workout-duration" min="5" value="30" required>
-
-                    <button class="button" type="submit">Adicionar treino</button>
-                </form>
-            </aside>
-        </section>
     </main>
 
     <footer class="site-footer">
@@ -68,7 +44,7 @@
         </div>
     </footer>
 
-    <script src="js/theme.js"></script>
+    <script src="../Orenji%20core/js/theme.js"></script>
     <script src="js/data.js"></script>
     <script src="js/storage.js"></script>
     <script src="js/ui.js"></script>

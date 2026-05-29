@@ -1,4 +1,30 @@
 const THEME_PRESETS = {
+    orenji: {
+        background: '#f7f4e9',
+        header: '#fff8e8',
+        primary: '#f7941d',
+        primaryStrong: '#e56f13',
+        accent: '#6fa24a',
+        danger: '#d9483b',
+        warning: '#d99a19',
+        texture: 'solid',
+        shape: 'soft',
+        shadow: 'soft',
+        density: 'comfortable'
+    },
+    orenjiDark: {
+        background: '#15110c',
+        header: '#20170f',
+        primary: '#ff9f2f',
+        primaryStrong: '#f97316',
+        accent: '#8bbf5a',
+        danger: '#f87171',
+        warning: '#facc15',
+        texture: 'soft',
+        shape: 'rounded',
+        shadow: 'deep',
+        density: 'comfortable'
+    },
     ocean: {
         background: '#020617',
         header: '#0f172a',
@@ -7,7 +33,10 @@ const THEME_PRESETS = {
         accent: '#22c55e',
         danger: '#f43f5e',
         warning: '#facc15',
-        texture: 'glass'
+        texture: 'glass',
+        shape: 'rounded',
+        shadow: 'soft',
+        density: 'comfortable'
     },
     energy: {
         background: '#26120a',
@@ -17,7 +46,10 @@ const THEME_PRESETS = {
         accent: '#facc15',
         danger: '#ef4444',
         warning: '#fde047',
-        texture: 'soft'
+        texture: 'soft',
+        shape: 'rounded',
+        shadow: 'deep',
+        density: 'comfortable'
     },
     forest: {
         background: '#071a12',
@@ -27,7 +59,10 @@ const THEME_PRESETS = {
         accent: '#a3e635',
         danger: '#fb7185',
         warning: '#fbbf24',
-        texture: 'glass'
+        texture: 'glass',
+        shape: 'rounded',
+        shadow: 'soft',
+        density: 'spacious'
     },
     berry: {
         background: '#210824',
@@ -37,7 +72,10 @@ const THEME_PRESETS = {
         accent: '#38bdf8',
         danger: '#fb7185',
         warning: '#facc15',
-        texture: 'soft'
+        texture: 'soft',
+        shape: 'rounded',
+        shadow: 'deep',
+        density: 'comfortable'
     },
     sunrise: {
         background: '#fff7ed',
@@ -47,7 +85,10 @@ const THEME_PRESETS = {
         accent: '#f97316',
         danger: '#dc2626',
         warning: '#ca8a04',
-        texture: 'solid'
+        texture: 'solid',
+        shape: 'soft',
+        shadow: 'soft',
+        density: 'spacious'
     },
     mint: {
         background: '#ecfeff',
@@ -57,9 +98,66 @@ const THEME_PRESETS = {
         accent: '#84cc16',
         danger: '#e11d48',
         warning: '#d97706',
-        texture: 'solid'
+        texture: 'solid',
+        shape: 'soft',
+        shadow: 'none',
+        density: 'comfortable'
+    },
+    graphite: {
+        background: '#101214',
+        header: '#181b1f',
+        primary: '#f2f4f8',
+        primaryStrong: '#cbd5e1',
+        accent: '#f7941d',
+        danger: '#ef4444',
+        warning: '#f59e0b',
+        texture: 'solid',
+        shape: 'square',
+        shadow: 'none',
+        density: 'compact'
+    },
+    citrus: {
+        background: '#14210f',
+        header: '#203417',
+        primary: '#d9f99d',
+        primaryStrong: '#84cc16',
+        accent: '#fb923c',
+        danger: '#ef4444',
+        warning: '#facc15',
+        texture: 'glass',
+        shape: 'rounded',
+        shadow: 'deep',
+        density: 'spacious'
+    },
+    rose: {
+        background: '#fff1f2',
+        header: '#ffe4e6',
+        primary: '#fb7185',
+        primaryStrong: '#e11d48',
+        accent: '#f97316',
+        danger: '#be123c',
+        warning: '#d97706',
+        texture: 'solid',
+        shape: 'rounded',
+        shadow: 'soft',
+        density: 'comfortable'
+    },
+    slate: {
+        background: '#e2e8f0',
+        header: '#cbd5e1',
+        primary: '#334155',
+        primaryStrong: '#0f172a',
+        accent: '#0f766e',
+        danger: '#dc2626',
+        warning: '#ca8a04',
+        texture: 'soft',
+        shape: 'soft',
+        shadow: 'soft',
+        density: 'compact'
     }
 };
+
+const APPEARANCE_FIELDS = ['texture', 'shape', 'shadow', 'density'];
 
 const COLOR_FIELDS = [
     ['background', 'background-color', 'background-value'],
@@ -80,8 +178,8 @@ function initSettings() {
     setupModeToggle();
     setupPresetButtons();
     setupAdvancedInputs();
-    setupTextureButtons();
-    setActiveTexture(savedColors.texture);
+    setupAppearanceButtons();
+    setActiveAppearance(savedColors);
 
     document.getElementById('save-colors').addEventListener('click', handleSaveColors);
     document.getElementById('reset-colors').addEventListener('click', handleResetColors);
@@ -117,7 +215,7 @@ function setupPresetButtons() {
             }
 
             setColorInputs(preset);
-            setActiveTexture(preset.texture);
+            setActiveAppearance(preset);
             updateThemePreview();
             markMatchingPreset(preset);
         });
@@ -133,10 +231,13 @@ function setupAdvancedInputs() {
     });
 }
 
-function setupTextureButtons() {
-    document.querySelectorAll('.texture-button').forEach(button => {
+function setupAppearanceButtons() {
+    document.querySelectorAll('.appearance-button').forEach(button => {
         button.addEventListener('click', () => {
-            setActiveTexture(button.dataset.texture);
+            setActiveAppearance({
+                ...getSelectedTheme(),
+                [button.dataset.option]: button.dataset.value
+            });
             updateThemePreview();
             markMatchingPreset(getSelectedTheme());
         });
@@ -154,9 +255,12 @@ function setColorInputs(colors) {
     });
 }
 
-function setActiveTexture(texture = THEME_DEFAULT_COLORS.texture) {
-    document.querySelectorAll('.texture-button').forEach(button => {
-        button.classList.toggle('active', button.dataset.texture === texture);
+function setActiveAppearance(theme = THEME_DEFAULT_COLORS) {
+    APPEARANCE_FIELDS.forEach(field => {
+        const value = theme[field] || THEME_DEFAULT_COLORS[field];
+        document.querySelectorAll(`.appearance-button[data-option="${field}"]`).forEach(button => {
+            button.classList.toggle('active', button.dataset.value === value);
+        });
     });
 }
 
@@ -189,16 +293,21 @@ function handleSaveColors() {
 
 function handleResetColors() {
     setColorInputs(THEME_DEFAULT_COLORS);
-    setActiveTexture(THEME_DEFAULT_COLORS.texture);
+    setActiveAppearance(THEME_DEFAULT_COLORS);
     resetThemeColors();
     updateThemePreview();
     markMatchingPreset(THEME_DEFAULT_COLORS);
 }
 
 function getSelectedTheme() {
+    const appearance = APPEARANCE_FIELDS.reduce((theme, field) => {
+        theme[field] = document.querySelector(`.appearance-button.active[data-option="${field}"]`)?.dataset.value || THEME_DEFAULT_COLORS[field];
+        return theme;
+    }, {});
+
     return {
         ...getSelectedColors(),
-        texture: document.querySelector('.texture-button.active')?.dataset.texture || THEME_DEFAULT_COLORS.texture
+        ...appearance
     };
 }
 
@@ -215,7 +324,11 @@ function markMatchingPreset(colors) {
             return preset[key].toLowerCase() === colors[key].toLowerCase();
         });
 
-        return sameColors && preset.texture === colors.texture;
+        const sameAppearance = APPEARANCE_FIELDS.every(field => {
+            return preset[field] === colors[field];
+        });
+
+        return sameColors && sameAppearance;
     });
 
     document.querySelectorAll('.theme-preset').forEach(button => {

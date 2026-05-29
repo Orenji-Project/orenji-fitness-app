@@ -6,7 +6,10 @@ const THEME_DEFAULT_COLORS = {
     accent: '#22c55e',
     danger: '#f43f5e',
     warning: '#facc15',
-    texture: 'glass'
+    texture: 'glass',
+    shape: 'rounded',
+    shadow: 'soft',
+    density: 'comfortable'
 };
 
 const THEME_STORAGE_KEY = 'fitnessapp.colors';
@@ -119,6 +122,9 @@ function applyThemeColors(colors = loadThemeColors()) {
     const text = isLightBackground ? '#111827' : '#e2e8f0';
     const textMuted = isLightBackground ? '#475569' : '#94a3b8';
     const texture = ['glass', 'soft', 'solid'].includes(theme.texture) ? theme.texture : 'glass';
+    const shape = ['rounded', 'soft', 'square'].includes(theme.shape) ? theme.shape : 'rounded';
+    const shadowLevel = ['none', 'soft', 'deep'].includes(theme.shadow) ? theme.shadow : 'soft';
+    const density = ['compact', 'comfortable', 'spacious'].includes(theme.density) ? theme.density : 'comfortable';
     const panelBg = getPanelColor(theme.background, isLightBackground, texture, 'base');
     const panelAltBg = getPanelColor(theme.background, isLightBackground, texture, 'alt');
     const secondaryBg = getPanelColor(theme.background, isLightBackground, texture, 'secondary');
@@ -127,7 +133,9 @@ function applyThemeColors(colors = loadThemeColors()) {
     const headerBg = texture === 'solid' ? theme.header : hexToRgba(theme.header, texture === 'soft' ? 0.88 : 0.72);
     const headerText = isLightHeader ? '#111827' : '#f8fafc';
     const headerTextMuted = isLightHeader ? '#475569' : '#cbd5e1';
-    const shadow = isLightBackground ? '0 20px 45px rgba(15,23,42,0.12)' : '0 20px 45px rgba(0,0,0,0.16)';
+    const radius = getThemeRadius(shape);
+    const shadow = getThemeShadow(shadowLevel, isLightBackground);
+    const spacing = getThemeSpacing(density);
 
     root.style.setProperty('--background', theme.background);
     root.style.setProperty('--background-end', backgroundEnd);
@@ -142,6 +150,12 @@ function applyThemeColors(colors = loadThemeColors()) {
     root.style.setProperty('--header-text', headerText);
     root.style.setProperty('--header-text-muted', headerTextMuted);
     root.style.setProperty('--card-shadow', shadow);
+    root.style.setProperty('--radius', radius);
+    root.style.setProperty('--section-padding', spacing.sectionPadding);
+    root.style.setProperty('--card-padding', spacing.cardPadding);
+    root.style.setProperty('--grid-gap', spacing.gridGap);
+    root.style.setProperty('--button-padding', spacing.buttonPadding);
+    root.style.setProperty('--control-padding', spacing.controlPadding);
     root.style.setProperty('--primary', theme.primary);
     root.style.setProperty('--primary-strong', theme.primaryStrong);
     root.style.setProperty('--accent', theme.accent);
@@ -151,6 +165,56 @@ function applyThemeColors(colors = loadThemeColors()) {
     root.style.setProperty('--accent-rgb', hexToRgbParts(theme.accent));
     root.style.setProperty('--danger-rgb', hexToRgbParts(theme.danger));
     root.style.setProperty('--warning-rgb', hexToRgbParts(theme.warning));
+}
+
+function getThemeRadius(shape) {
+    return {
+        rounded: '24px',
+        soft: '14px',
+        square: '6px'
+    }[shape];
+}
+
+function getThemeShadow(shadowLevel, isLightBackground) {
+    if (shadowLevel === 'none') {
+        return 'none';
+    }
+
+    if (shadowLevel === 'deep') {
+        return isLightBackground
+            ? '0 28px 60px rgba(15,23,42,0.2)'
+            : '0 30px 70px rgba(0,0,0,0.32)';
+    }
+
+    return isLightBackground
+        ? '0 20px 45px rgba(15,23,42,0.12)'
+        : '0 20px 45px rgba(0,0,0,0.16)';
+}
+
+function getThemeSpacing(density) {
+    return {
+        compact: {
+            sectionPadding: '2rem 0 1.4rem',
+            cardPadding: '1.25rem',
+            gridGap: '0.85rem',
+            buttonPadding: '0.75rem 1.2rem',
+            controlPadding: '0.75rem 0.85rem'
+        },
+        comfortable: {
+            sectionPadding: '3rem 0 2rem',
+            cardPadding: '1.75rem',
+            gridGap: '1.25rem',
+            buttonPadding: '0.95rem 1.6rem',
+            controlPadding: '0.95rem 1rem'
+        },
+        spacious: {
+            sectionPadding: '4rem 0 2.75rem',
+            cardPadding: '2.25rem',
+            gridGap: '1.6rem',
+            buttonPadding: '1.1rem 1.9rem',
+            controlPadding: '1.1rem 1.15rem'
+        }
+    }[density];
 }
 
 function getPanelColor(background, isLightBackground, texture, role) {
