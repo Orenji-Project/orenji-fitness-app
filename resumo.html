@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Orenji Fitness • Resumo</title>
-    <link rel="icon" href="assets/logo.png" type="image/png">
+    <link rel="icon" href="assets/logo_outline.png" type="image/png">
     <link rel="stylesheet" href="../Orenji%20core/css/variables.css">
     <link rel="stylesheet" href="../Orenji%20core/css/core.css">
     <link rel="stylesheet" href="../Orenji%20core/css/layout.css">
@@ -17,7 +17,7 @@
     <header class="main-header">
         <div class="container header-row">
             <a class="brand" href="index.html">
-                <img class="brand-logo" src="assets/logo.png" alt="">
+                <img class="brand-logo" src="assets/logo_outline.png" alt="">
                 <span>Orenji Fitness</span>
             </a>
             <nav>
@@ -38,26 +38,56 @@
         <section id="summary-cards" class="stats-grid">
             <article class="stat-card">
                 <h3>0</h3>
-                <p>Treinos registados</p>
+                <p>Treinos concluídos</p>
             </article>
             <article class="stat-card">
-                <h3>0 min</h3>
-                <p>Total de minutos</p>
+                <h3>0</h3>
+                <p>Treinos este ano</p>
             </article>
             <article class="stat-card">
                 <h3>0%</h3>
-                <p>Meta cumprida</p>
+                <p>Conclusão semanal</p>
+            </article>
+        </section>
+
+        <section class="summary-insights">
+            <article class="summary-panel muscle-panel">
+                <div>
+                    <span class="meter-title">Foco muscular</span>
+                    <h2>Grupo mais trabalhado da semana</h2>
+                    <p id="muscle-focus-copy">Termina treinos para veres o foco muscular dos últimos 7 dias.</p>
+                </div>
+                <div class="anatomy-map" id="anatomy-map" aria-label="Mapa anatómico semanal" role="img">
+                    <svg viewBox="0 0 220 320" aria-hidden="true" focusable="false">
+                        <circle class="muscle-shape muscle-core" cx="110" cy="48" r="24"></circle>
+                        <path class="muscle-shape muscle-ombros" d="M70 88 C84 72 136 72 150 88 L165 116 C145 108 125 104 110 104 C95 104 75 108 55 116 Z"></path>
+                        <path class="muscle-shape muscle-peito" d="M78 104 C92 96 106 98 110 112 C114 98 128 96 142 104 L136 152 C124 158 116 154 110 144 C104 154 96 158 84 152 Z"></path>
+                        <path class="muscle-shape muscle-costas" d="M74 96 C88 88 102 88 110 106 C118 88 132 88 146 96 L152 164 C132 172 120 166 110 150 C100 166 88 172 68 164 Z"></path>
+                        <path class="muscle-shape muscle-core" d="M88 150 C98 158 122 158 132 150 L128 208 C116 216 104 216 92 208 Z"></path>
+                        <path class="muscle-shape muscle-pernas" d="M90 210 L108 210 L104 292 L76 292 Z"></path>
+                        <path class="muscle-shape muscle-pernas" d="M112 210 L130 210 L144 292 L116 292 Z"></path>
+                        <path class="muscle-shape muscle-cardio" d="M104 118 C108 110 120 110 124 120 C128 132 116 142 110 148 C104 142 92 132 96 120 C98 116 100 119 104 118 Z"></path>
+                        <path class="muscle-shape muscle-mobilidade" d="M56 122 C42 148 42 176 58 202"></path>
+                        <path class="muscle-shape muscle-mobilidade" d="M164 122 C178 148 178 176 162 202"></path>
+                    </svg>
+                </div>
+            </article>
+
+            <article class="summary-panel capacity-panel">
+                <span class="meter-title">Capacidade</span>
+                <h2>Evolução por carga</h2>
+                <p id="capacity-copy">Regista pesos em pelo menos duas sessões do mesmo exercício para comparar evolução.</p>
+                <div class="capacity-highlight">
+                    <strong id="capacity-value">Sem comparação</strong>
+                    <span id="capacity-detail">Volume calculado por kg x reps.</span>
+                </div>
             </article>
         </section>
 
         <section class="progress-list">
             <article class="progress-card">
-                <h3>Frequência semanal</h3>
-                <div class="progress-bar"><span style="width: 60%"></span></div>
-            </article>
-            <article class="progress-card">
-                <h3>Objetivo médio</h3>
-                <div class="progress-bar"><span style="width: 45%"></span></div>
+                <h3>Conclusão semanal</h3>
+                <div class="progress-bar"><span style="width: 0%"></span></div>
             </article>
         </section>
     </main>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Orenji Fitness • Configurações</title>
-    <link rel="icon" href="assets/logo.png" type="image/png">
+    <link rel="icon" href="assets/logo_outline.png" type="image/png">
     <link rel="stylesheet" href="../Orenji%20core/css/variables.css">
     <link rel="stylesheet" href="../Orenji%20core/css/core.css">
     <link rel="stylesheet" href="../Orenji%20core/css/layout.css">
@@ -12,12 +12,13 @@
     <link rel="stylesheet" href="../Orenji%20core/css/themes.css">
     <link rel="stylesheet" href="../Orenji%20core/css/animations.css">
     <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/settings.css">
 </head>
 <body>
     <header class="main-header">
         <div class="container header-row">
             <a class="brand" href="index.html">
-                <img class="brand-logo" src="assets/logo.png" alt="">
+                <img class="brand-logo" src="assets/logo_outline.png" alt="">
                 <span>Orenji Fitness</span>
             </a>
             <nav>
@@ -42,76 +43,21 @@
                     <p>Personaliza a paleta de cores da aplicação conforme a tua preferência.</p>
                 </div>
 
+                <label class="theme-sync-control">
+                    <span>
+                        <strong>Sincronizar tema entre apps</strong>
+                        <small>Quando ativo, todas as apps Orenji usam o mesmo tema.</small>
+                    </span>
+                    <input type="checkbox" id="theme-sync">
+                </label>
+
                 <div class="settings-mode-toggle" aria-label="Modo de personalização">
                     <button type="button" class="mode-button active" data-mode="basic">Básico</button>
                     <button type="button" class="mode-button" data-mode="advanced">Avançado</button>
                 </div>
 
                 <div class="settings-panel active" id="basic-panel">
-                    <div class="preset-grid">
-                        <button type="button" class="theme-preset featured-preset" data-theme="orenji">
-                            <span class="preset-swatch image-swatch">
-                                <img src="assets/theme-orenji.jpeg" alt="">
-                            </span>
-                            <strong>Orenji</strong>
-                            <span>Marca clara</span>
-                        </button>
-                        <button type="button" class="theme-preset" data-theme="orenjiDark">
-                            <span class="preset-swatch orenji-dark-swatch"></span>
-                            <strong>Orenji Dark</strong>
-                            <span>Laranja noturno</span>
-                        </button>
-                        <button type="button" class="theme-preset" data-theme="ocean">
-                            <span class="preset-swatch ocean-swatch"></span>
-                            <strong>Oceano</strong>
-                            <span>Azul profundo</span>
-                        </button>
-                        <button type="button" class="theme-preset" data-theme="energy">
-                            <span class="preset-swatch energy-swatch"></span>
-                            <strong>Energia</strong>
-                            <span>Laranja quente</span>
-                        </button>
-                        <button type="button" class="theme-preset" data-theme="forest">
-                            <span class="preset-swatch forest-swatch"></span>
-                            <strong>Floresta</strong>
-                            <span>Verde natural</span>
-                        </button>
-                        <button type="button" class="theme-preset" data-theme="berry">
-                            <span class="preset-swatch berry-swatch"></span>
-                            <strong>Berry</strong>
-                            <span>Roxo vibrante</span>
-                        </button>
-                        <button type="button" class="theme-preset" data-theme="sunrise">
-                            <span class="preset-swatch sunrise-swatch"></span>
-                            <strong>Amanhecer</strong>
-                            <span>Fundo claro</span>
-                        </button>
-                        <button type="button" class="theme-preset" data-theme="mint">
-                            <span class="preset-swatch mint-swatch"></span>
-                            <strong>Menta</strong>
-                            <span>Leve e fresco</span>
-                        </button>
-                        <button type="button" class="theme-preset" data-theme="graphite">
-                            <span class="preset-swatch graphite-swatch"></span>
-                            <strong>Graphite</strong>
-                            <span>Neutro focado</span>
-                        </button>
-                        <button type="button" class="theme-preset" data-theme="citrus">
-                            <span class="preset-swatch citrus-swatch"></span>
-                            <strong>Citrus</strong>
-                            <span>Verde elétrico</span>
-                        </button>
-                        <button type="button" class="theme-preset" data-theme="rose">
-                            <span class="preset-swatch rose-swatch"></span>
-                            <strong>Rose</strong>
-                            <span>Claro vibrante</span>
-                        </button>
-                        <button type="button" class="theme-preset" data-theme="slate">
-                            <span class="preset-swatch slate-swatch"></span>
-                            <strong>Slate</strong>
-                            <span>Calmo e limpo</span>
-                        </button>
-                    </div>
+                    <div class="color-option-grid" aria-label="Temas"></div>
                 </div>
 
                 <div class="appearance-group">

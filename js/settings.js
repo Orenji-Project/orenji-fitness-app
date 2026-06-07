@@ -12,6 +12,19 @@ const THEME_PRESETS = {
         shadow: 'soft',
         density: 'comfortable'
     },
+    orenjiSolid: {
+        background: '#f7f4e9',
+        header: '#f7941d',
+        primary: '#f7941d',
+        primaryStrong: '#d9680f',
+        accent: '#6fa24a',
+        danger: '#d9483b',
+        warning: '#d99a19',
+        texture: 'solid',
+        shape: 'soft',
+        shadow: 'none',
+        density: 'comfortable'
+    },
     orenjiDark: {
         background: '#15110c',
         header: '#20170f',
@@ -38,6 +51,19 @@ const THEME_PRESETS = {
         shadow: 'soft',
         density: 'comfortable'
     },
+    oceanSolid: {
+        background: '#eaf2ff',
+        header: '#2563eb',
+        primary: '#2563eb',
+        primaryStrong: '#1d4ed8',
+        accent: '#0f766e',
+        danger: '#dc2626',
+        warning: '#ca8a04',
+        texture: 'solid',
+        shape: 'soft',
+        shadow: 'none',
+        density: 'comfortable'
+    },
     energy: {
         background: '#26120a',
         header: '#3b1d0c',
@@ -49,6 +75,19 @@ const THEME_PRESETS = {
         texture: 'soft',
         shape: 'rounded',
         shadow: 'deep',
+        density: 'comfortable'
+    },
+    energySolid: {
+        background: '#fff4e6',
+        header: '#f97316',
+        primary: '#f97316',
+        primaryStrong: '#ea580c',
+        accent: '#ca8a04',
+        danger: '#dc2626',
+        warning: '#f59e0b',
+        texture: 'solid',
+        shape: 'soft',
+        shadow: 'none',
         density: 'comfortable'
     },
     forest: {
@@ -64,6 +103,19 @@ const THEME_PRESETS = {
         shadow: 'soft',
         density: 'spacious'
     },
+    forestSolid: {
+        background: '#eefcf4',
+        header: '#059669',
+        primary: '#059669',
+        primaryStrong: '#047857',
+        accent: '#65a30d',
+        danger: '#dc2626',
+        warning: '#ca8a04',
+        texture: 'solid',
+        shape: 'soft',
+        shadow: 'none',
+        density: 'comfortable'
+    },
     berry: {
         background: '#210824',
         header: '#320b38',
@@ -75,6 +127,19 @@ const THEME_PRESETS = {
         texture: 'soft',
         shape: 'rounded',
         shadow: 'deep',
+        density: 'comfortable'
+    },
+    berrySolid: {
+        background: '#fdf2ff',
+        header: '#c026d3',
+        primary: '#c026d3',
+        primaryStrong: '#a21caf',
+        accent: '#0284c7',
+        danger: '#e11d48',
+        warning: '#ca8a04',
+        texture: 'solid',
+        shape: 'soft',
+        shadow: 'none',
         density: 'comfortable'
     },
     sunrise: {
@@ -159,6 +224,26 @@ const THEME_PRESETS = {
 
 const APPEARANCE_FIELDS = ['texture', 'shape', 'shadow', 'density'];
 
+const THEME_OPTIONS = [
+    { id: 'orenji', label: 'Orenji', color: '#f7941d', style: 'glow' },
+    { id: 'orenjiSolid', label: 'Orenji sólido', color: '#f7941d', style: 'solid' },
+    { id: 'orenjiDark', label: 'Orenji Dark', color: '#15110c', style: 'glow' },
+    { id: 'ocean', label: 'Oceano', color: '#2563eb', style: 'glow' },
+    { id: 'oceanSolid', label: 'Oceano sólido', color: '#2563eb', style: 'solid' },
+    { id: 'energy', label: 'Energia', color: '#fb923c', style: 'glow' },
+    { id: 'energySolid', label: 'Energia sólida', color: '#f97316', style: 'solid' },
+    { id: 'forest', label: 'Floresta', color: '#059669', style: 'glow' },
+    { id: 'forestSolid', label: 'Floresta sólida', color: '#22c55e', style: 'solid' },
+    { id: 'berry', label: 'Berry', color: '#c026d3', style: 'glow' },
+    { id: 'berrySolid', label: 'Berry sólido', color: '#e879f9', style: 'solid' },
+    { id: 'sunrise', label: 'Amanhecer', color: '#fb7185', style: 'solid' },
+    { id: 'mint', label: 'Menta', color: '#14b8a6', style: 'solid' },
+    { id: 'graphite', label: 'Graphite', color: '#101214', style: 'solid' },
+    { id: 'citrus', label: 'Citrus', color: '#84cc16', style: 'glow' },
+    { id: 'rose', label: 'Rose', color: '#e11d48', style: 'solid' },
+    { id: 'slate', label: 'Slate', color: '#64748b', style: 'solid' }
+];
+
 const COLOR_FIELDS = [
     ['background', 'background-color', 'background-value'],
     ['header', 'header-color', 'header-value'],
@@ -173,16 +258,88 @@ function initSettings() {
     const savedColors = loadThemeColors();
 
     setColorInputs(savedColors);
-    updateThemePreview();
-    markMatchingPreset(savedColors);
     setupModeToggle();
     setupPresetButtons();
     setupAdvancedInputs();
     setupAppearanceButtons();
+    setupThemeSync();
     setActiveAppearance(savedColors);
+    updateThemePreview();
+    markMatchingPreset(savedColors);
 
     document.getElementById('save-colors').addEventListener('click', handleSaveColors);
     document.getElementById('reset-colors').addEventListener('click', handleResetColors);
+}
+
+function renderThemeOptions() {
+    const grid = document.querySelector('.color-option-grid');
+
+    if (!grid || grid.children.length) {
+        return;
+    }
+
+    const groups = [
+        ['glow', 'Brilhante'],
+        ['solid', 'Sólida']
+    ];
+
+    groups.forEach(([style, label]) => {
+        const group = document.createElement('div');
+        group.className = 'color-option-group';
+
+        const heading = document.createElement('span');
+        heading.className = 'color-option-group__label';
+        heading.textContent = label;
+
+        const optionsRow = document.createElement('div');
+        optionsRow.className = 'color-option-row';
+
+        THEME_OPTIONS
+            .filter(option => option.style === style)
+            .forEach(option => {
+                if (!THEME_PRESETS[option.id]) {
+                    return;
+                }
+
+                const button = document.createElement('button');
+                button.type = 'button';
+                button.className = `color-option color-option--${option.style}`;
+                button.dataset.theme = option.id;
+                button.style.setProperty('--option-color', option.color);
+                button.setAttribute('aria-label', `Tema ${option.label}`);
+                button.setAttribute('aria-pressed', 'false');
+                button.title = option.label;
+
+                const logo = document.createElement('img');
+                logo.className = 'color-option__logo color-option__logo--outline';
+                logo.src = 'assets/logo_outline.png';
+                logo.alt = '';
+
+                button.appendChild(logo);
+                optionsRow.appendChild(button);
+            });
+
+        group.append(heading, optionsRow);
+        grid.appendChild(group);
+    });
+}
+
+function setupThemeSync() {
+    const syncInput = document.getElementById('theme-sync');
+
+    if (!syncInput) {
+        return;
+    }
+
+    syncInput.checked = isThemeSyncEnabled();
+    syncInput.addEventListener('change', () => {
+        setThemeSyncEnabled(syncInput.checked);
+        const savedColors = loadThemeColors();
+        setColorInputs(savedColors);
+        setActiveAppearance(savedColors);
+        updateThemePreview();
+        markMatchingPreset(savedColors);
+    });
 }
 
 function setupModeToggle() {
@@ -206,7 +363,10 @@ function setupModeToggle() {
 }
 
 function setupPresetButtons() {
-    document.querySelectorAll('.theme-preset').forEach(button => {
+    // Os seletores de cor são gerados aqui para manter HTML/CSS reutilizáveis sem alterar a lógica de presets.
+    renderThemeOptions();
+
+    document.querySelectorAll('.color-option').forEach(button => {
         button.addEventListener('click', () => {
             const preset = THEME_PRESETS[button.dataset.theme];
 
@@ -331,8 +491,11 @@ function markMatchingPreset(colors) {
         return sameColors && sameAppearance;
     });
 
-    document.querySelectorAll('.theme-preset').forEach(button => {
-        button.classList.toggle('active', selectedTheme?.[0] === button.dataset.theme);
+    document.querySelectorAll('.color-option').forEach(button => {
+        const isActive = selectedTheme?.[0] === button.dataset.theme;
+
+        button.classList.toggle('active', isActive);
+        button.setAttribute('aria-pressed', String(isActive));
     });
 }
 

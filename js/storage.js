@@ -35,3 +35,33 @@ const WorkoutStorage = {
         return workouts;
     }
 };
+
+const TrainingHistoryStorage = {
+    key: 'fitnessapp.trainingHistory',
+
+    load() {
+        try {
+            const json = localStorage.getItem(this.key);
+            const history = json ? JSON.parse(json) : [];
+            return Array.isArray(history) ? history : [];
+        } catch (error) {
+            console.warn('Falha ao carregar histórico de treino', error);
+            return [];
+        }
+    },
+
+    save(items) {
+        try {
+            localStorage.setItem(this.key, JSON.stringify(items));
+        } catch (error) {
+            console.warn('Falha ao guardar histórico de treino', error);
+        }
+    },
+
+    add(item) {
+        const history = this.load();
+        const nextHistory = [...history, item];
+        this.save(nextHistory);
+        return nextHistory;
+    }
+};
