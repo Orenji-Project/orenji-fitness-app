@@ -37,214 +37,317 @@
         </section>
 
         <section class="settings-grid">
-            <article class="settings-card">
-                <div class="settings-card-header">
-                    <h2>Personalização de cores</h2>
-                    <p>Personaliza a paleta de cores da aplicação conforme a tua preferência.</p>
+            <details class="settings-card personalization-card" open>
+                <summary class="settings-card-summary">
+                    <h2>Personalização</h2>
+                    <p>Define cores, textura e a forma como a interface se apresenta.</p>
+                </summary>
+
+                <div class="settings-accordion-body">
+                    <details class="settings-disclosure" open>
+                        <summary>Sincronização</summary>
+                        <label class="theme-sync-control">
+                            <span>
+                                <strong>Sincronizar tema entre apps</strong>
+                                <small>Quando ativo, todas as apps Orenji usam o mesmo tema.</small>
+                            </span>
+                            <input type="checkbox" id="theme-sync">
+                        </label>
+                    </details>
+
+                    <details class="settings-disclosure" open>
+                        <summary>Cores</summary>
+                        <div class="settings-mode-toggle" aria-label="Modo de personalização">
+                            <button type="button" class="mode-button active" data-mode="basic">Básico</button>
+                            <button type="button" class="mode-button" data-mode="advanced">Avançado</button>
+                        </div>
+
+                        <div class="settings-panel active" id="basic-panel">
+                            <div class="color-option-grid" aria-label="Temas"></div>
+                        </div>
+
+                        <div class="settings-panel" id="advanced-panel" hidden>
+                            <div class="color-picker-group">
+                                <label for="background-color">Fundo da app</label>
+                                <div class="color-input-wrapper">
+                                    <input type="color" id="background-color" value="#020617" class="color-input">
+                                    <span id="background-value" class="color-value">#020617</span>
+                                </div>
+                            </div>
+
+                            <div class="color-picker-group">
+                                <label for="header-color">Barra superior</label>
+                                <div class="color-input-wrapper">
+                                    <input type="color" id="header-color" value="#0f172a" class="color-input">
+                                    <span id="header-value" class="color-value">#0f172a</span>
+                                </div>
+                            </div>
+
+                            <div class="color-picker-group">
+                                <label for="primary-color">Cor primária</label>
+                                <div class="color-input-wrapper">
+                                    <input type="color" id="primary-color" value="#5b96ff" class="color-input">
+                                    <span id="primary-value" class="color-value">#5b96ff</span>
+                                </div>
+                            </div>
+
+                            <div class="color-picker-group">
+                                <label for="primary-strong-color">Cor primária forte</label>
+                                <div class="color-input-wrapper">
+                                    <input type="color" id="primary-strong-color" value="#3b82f6" class="color-input">
+                                    <span id="primary-strong-value" class="color-value">#3b82f6</span>
+                                </div>
+                            </div>
+
+                            <div class="color-picker-group">
+                                <label for="accent-color">Cor de destaque</label>
+                                <div class="color-input-wrapper">
+                                    <input type="color" id="accent-color" value="#22c55e" class="color-input">
+                                    <span id="accent-value" class="color-value">#22c55e</span>
+                                </div>
+                            </div>
+
+                            <div class="color-picker-group">
+                                <label for="danger-color">Cor de atenção</label>
+                                <div class="color-input-wrapper">
+                                    <input type="color" id="danger-color" value="#f43f5e" class="color-input">
+                                    <span id="danger-value" class="color-value">#f43f5e</span>
+                                </div>
+                            </div>
+
+                            <div class="color-picker-group">
+                                <label for="warning-color">Cor de aviso</label>
+                                <div class="color-input-wrapper">
+                                    <input type="color" id="warning-color" value="#facc15" class="color-input">
+                                    <span id="warning-value" class="color-value">#facc15</span>
+                                </div>
+                            </div>
+                        </div>
+                    </details>
+
+                    <details class="settings-disclosure">
+                        <summary>Aparência</summary>
+                        <div class="appearance-group">
+                            <h3>Textura da interface</h3>
+                            <div class="appearance-options" aria-label="Textura da interface">
+                                <button type="button" class="appearance-button active" data-option="texture" data-value="glass">
+                                    <strong>Vidro</strong>
+                                    <span>Mais leve</span>
+                                </button>
+                                <button type="button" class="appearance-button" data-option="texture" data-value="soft">
+                                    <strong>Suave</strong>
+                                    <span>Equilibrada</span>
+                                </button>
+                                <button type="button" class="appearance-button" data-option="texture" data-value="solid">
+                                    <strong>Sólida</strong>
+                                    <span>Mais opaca</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="appearance-group">
+                            <h3>Forma dos cartões</h3>
+                            <div class="appearance-options" aria-label="Forma dos cartões">
+                                <button type="button" class="appearance-button active" data-option="shape" data-value="rounded">
+                                    <strong>Redonda</strong>
+                                    <span>Mais orgânica</span>
+                                </button>
+                                <button type="button" class="appearance-button" data-option="shape" data-value="soft">
+                                    <strong>Suave</strong>
+                                    <span>Equilibrada</span>
+                                </button>
+                                <button type="button" class="appearance-button" data-option="shape" data-value="square">
+                                    <strong>Reta</strong>
+                                    <span>Mais técnica</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="appearance-group">
+                            <h3>Sombra</h3>
+                            <div class="appearance-options" aria-label="Sombra">
+                                <button type="button" class="appearance-button" data-option="shadow" data-value="none">
+                                    <strong>Nenhuma</strong>
+                                    <span>Plano</span>
+                                </button>
+                                <button type="button" class="appearance-button active" data-option="shadow" data-value="soft">
+                                    <strong>Suave</strong>
+                                    <span>Discreta</span>
+                                </button>
+                                <button type="button" class="appearance-button" data-option="shadow" data-value="deep">
+                                    <strong>Profunda</strong>
+                                    <span>Mais relevo</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="appearance-group">
+                            <h3>Densidade</h3>
+                            <div class="appearance-options" aria-label="Densidade">
+                                <button type="button" class="appearance-button" data-option="density" data-value="compact">
+                                    <strong>Compacta</strong>
+                                    <span>Mais dados</span>
+                                </button>
+                                <button type="button" class="appearance-button active" data-option="density" data-value="comfortable">
+                                    <strong>Confortável</strong>
+                                    <span>Padrão</span>
+                                </button>
+                                <button type="button" class="appearance-button" data-option="density" data-value="spacious">
+                                    <strong>Espaçosa</strong>
+                                    <span>Mais ar</span>
+                                </button>
+                            </div>
+                        </div>
+                    </details>
+
+                    <details class="settings-disclosure">
+                        <summary>Prévia</summary>
+                        <div class="color-preview app-preview" id="color-preview">
+                            <div class="preview-app-shell">
+                                <div class="preview-app-header">
+                                    <span>Orenji Fitness</span>
+                                    <small>Configuração ativa</small>
+                                </div>
+                                <div class="preview-app-body">
+                                    <article class="preview-workout-card">
+                                        <span class="preview-kicker">Treino de hoje</span>
+                                        <strong>Força e mobilidade</strong>
+                                        <p>35 min · 3 exercícios</p>
+                                        <button type="button" class="button">Iniciar</button>
+                                    </article>
+                                    <article class="preview-progress-card">
+                                        <span class="preview-kicker">Semana</span>
+                                        <strong>4/7 treinos</strong>
+                                        <div class="preview-progress-bar">
+                                            <span></span>
+                                        </div>
+                                    </article>
+                                </div>
+                            </div>
+                        </div>
+                    </details>
+
+                    <details class="settings-disclosure" open>
+                        <summary>Guardar ou restaurar</summary>
+                        <div class="settings-actions">
+                            <button class="button" id="save-colors">Guardar tema</button>
+                            <button class="button button-secondary" id="reset-colors">Restaurar padrão</button>
+                        </div>
+                    </details>
                 </div>
+            </details>
 
-                <label class="theme-sync-control">
-                    <span>
-                        <strong>Sincronizar tema entre apps</strong>
-                        <small>Quando ativo, todas as apps Orenji usam o mesmo tema.</small>
-                    </span>
-                    <input type="checkbox" id="theme-sync">
-                </label>
+            <details class="settings-card settings-control-card" open>
+                <summary class="settings-card-summary">
+                    <h2>Preferências da app</h2>
+                    <p>Ajusta dados pessoais simples e comportamento da interface.</p>
+                </summary>
 
-                <div class="settings-mode-toggle" aria-label="Modo de personalização">
-                    <button type="button" class="mode-button active" data-mode="basic">Básico</button>
-                    <button type="button" class="mode-button" data-mode="advanced">Avançado</button>
-                </div>
+                <div class="settings-accordion-body">
+                    <details class="settings-disclosure" open>
+                        <summary>Perfil</summary>
+                        <div class="settings-form-grid">
+                            <label class="settings-field" for="profile-name">
+                                <span>Nome na saudação</span>
+                                <input type="text" id="profile-name" maxlength="32" autocomplete="name">
+                            </label>
+                        </div>
+                    </details>
 
-                <div class="settings-panel active" id="basic-panel">
-                    <div class="color-option-grid" aria-label="Temas"></div>
-                </div>
+                    <details class="settings-disclosure" open>
+                        <summary>Navegação</summary>
+                        <div class="settings-form-grid">
+                            <label class="settings-field" for="preferred-home">
+                                <span>Página inicial preferida</span>
+                                <select id="preferred-home">
+                                    <option value="inicio.html">Início</option>
+                                    <option value="treinos.html">Treinos</option>
+                                    <option value="resumo.html">Resumo</option>
+                                </select>
+                            </label>
+                        </div>
+                    </details>
 
-                <div class="appearance-group">
-                    <h3>Textura da interface</h3>
-                    <div class="appearance-options" aria-label="Textura da interface">
-                        <button type="button" class="appearance-button active" data-option="texture" data-value="glass">
-                            <strong>Vidro</strong>
-                            <span>Mais leve</span>
-                        </button>
-                        <button type="button" class="appearance-button" data-option="texture" data-value="soft">
-                            <strong>Suave</strong>
-                            <span>Equilibrada</span>
-                        </button>
-                        <button type="button" class="appearance-button" data-option="texture" data-value="solid">
-                            <strong>Sólida</strong>
-                            <span>Mais opaca</span>
-                        </button>
+                    <details class="settings-disclosure">
+                        <summary>Movimento</summary>
+                        <label class="theme-sync-control">
+                            <span>
+                                <strong>Reduzir animações</strong>
+                                <small>Diminui transições e movimentos visuais na aplicação.</small>
+                            </span>
+                            <input type="checkbox" id="reduce-motion">
+                        </label>
+                    </details>
+
+                    <div class="settings-actions settings-actions--compact">
+                        <button class="button" id="save-preferences">Guardar preferências</button>
                     </div>
                 </div>
+            </details>
 
-                <div class="appearance-group">
-                    <h3>Forma dos cartões</h3>
-                    <div class="appearance-options" aria-label="Forma dos cartões">
-                        <button type="button" class="appearance-button active" data-option="shape" data-value="rounded">
-                            <strong>Redonda</strong>
-                            <span>Mais orgânica</span>
-                        </button>
-                        <button type="button" class="appearance-button" data-option="shape" data-value="soft">
-                            <strong>Suave</strong>
-                            <span>Equilibrada</span>
-                        </button>
-                        <button type="button" class="appearance-button" data-option="shape" data-value="square">
-                            <strong>Reta</strong>
-                            <span>Mais técnica</span>
-                        </button>
-                    </div>
+            <details class="settings-card settings-control-card" open>
+                <summary class="settings-card-summary">
+                    <h2>Dados e segurança</h2>
+                    <p>Exporta, importa ou limpa os dados guardados neste navegador.</p>
+                </summary>
+
+                <div class="settings-accordion-body">
+                    <details class="settings-disclosure" open>
+                        <summary>Portabilidade</summary>
+                        <div class="data-actions">
+                            <button class="button" id="export-data">Exportar dados</button>
+                            <label class="button button-secondary file-import-button" for="import-data-file">Importar dados</label>
+                            <input type="file" id="import-data-file" accept="application/json,.json">
+                        </div>
+                        <p class="settings-help">O ficheiro inclui treinos, histórico, sessão de treino, tema e preferências.</p>
+                    </details>
+
+                    <details class="settings-disclosure">
+                        <summary>Limpeza</summary>
+                        <div class="danger-zone">
+                            <div>
+                                <strong>Limpar dados da app</strong>
+                                <p>Remove os dados locais do Orenji Fitness deste navegador.</p>
+                            </div>
+                            <button class="button button-secondary danger-button" id="clear-app-data">Limpar dados</button>
+                        </div>
+                    </details>
+
+                    <p class="settings-message" id="data-message" role="status" aria-live="polite"></p>
                 </div>
+            </details>
 
-                <div class="appearance-group">
-                    <h3>Sombra</h3>
-                    <div class="appearance-options" aria-label="Sombra">
-                        <button type="button" class="appearance-button" data-option="shadow" data-value="none">
-                            <strong>Nenhuma</strong>
-                            <span>Plano</span>
-                        </button>
-                        <button type="button" class="appearance-button active" data-option="shadow" data-value="soft">
-                            <strong>Suave</strong>
-                            <span>Discreta</span>
-                        </button>
-                        <button type="button" class="appearance-button" data-option="shadow" data-value="deep">
-                            <strong>Profunda</strong>
-                            <span>Mais relevo</span>
-                        </button>
-                    </div>
-                </div>
-
-                <div class="appearance-group">
-                    <h3>Densidade</h3>
-                    <div class="appearance-options" aria-label="Densidade">
-                        <button type="button" class="appearance-button" data-option="density" data-value="compact">
-                            <strong>Compacta</strong>
-                            <span>Mais dados</span>
-                        </button>
-                        <button type="button" class="appearance-button active" data-option="density" data-value="comfortable">
-                            <strong>Confortável</strong>
-                            <span>Padrão</span>
-                        </button>
-                        <button type="button" class="appearance-button" data-option="density" data-value="spacious">
-                            <strong>Espaçosa</strong>
-                            <span>Mais ar</span>
-                        </button>
-                    </div>
-                </div>
-
-                <div class="settings-panel" id="advanced-panel" hidden>
-                    <div class="color-picker-group">
-                        <label for="background-color">Fundo da app</label>
-                        <div class="color-input-wrapper">
-                            <input type="color" id="background-color" value="#020617" class="color-input">
-                            <span id="background-value" class="color-value">#020617</span>
-                        </div>
-                    </div>
-
-                    <div class="color-picker-group">
-                        <label for="header-color">Barra superior</label>
-                        <div class="color-input-wrapper">
-                            <input type="color" id="header-color" value="#0f172a" class="color-input">
-                            <span id="header-value" class="color-value">#0f172a</span>
-                        </div>
-                    </div>
-
-                    <div class="color-picker-group">
-                        <label for="primary-color">Cor primária</label>
-                        <div class="color-input-wrapper">
-                            <input type="color" id="primary-color" value="#5b96ff" class="color-input">
-                            <span id="primary-value" class="color-value">#5b96ff</span>
-                        </div>
-                    </div>
-
-                    <div class="color-picker-group">
-                        <label for="primary-strong-color">Cor primária forte</label>
-                        <div class="color-input-wrapper">
-                            <input type="color" id="primary-strong-color" value="#3b82f6" class="color-input">
-                            <span id="primary-strong-value" class="color-value">#3b82f6</span>
-                        </div>
-                    </div>
-
-                    <div class="color-picker-group">
-                        <label for="accent-color">Cor de destaque</label>
-                        <div class="color-input-wrapper">
-                            <input type="color" id="accent-color" value="#22c55e" class="color-input">
-                            <span id="accent-value" class="color-value">#22c55e</span>
-                        </div>
-                    </div>
-
-                    <div class="color-picker-group">
-                        <label for="danger-color">Cor de atenção</label>
-                        <div class="color-input-wrapper">
-                            <input type="color" id="danger-color" value="#f43f5e" class="color-input">
-                            <span id="danger-value" class="color-value">#f43f5e</span>
-                        </div>
-                    </div>
-
-                    <div class="color-picker-group">
-                        <label for="warning-color">Cor de aviso</label>
-                        <div class="color-input-wrapper">
-                            <input type="color" id="warning-color" value="#facc15" class="color-input">
-                            <span id="warning-value" class="color-value">#facc15</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="color-preview" id="color-preview" hidden>
-                    <h3>Prévia das cores</h3>
-                    <div class="preview-grid">
-                        <div class="preview-card background-preview">
-                            <span>Fundo</span>
-                        </div>
-                        <div class="preview-card header-preview">
-                            <span>Barra superior</span>
-                        </div>
-                        <div class="preview-card primary-preview">
-                            <span>Primária</span>
-                        </div>
-                        <div class="preview-card accent-preview">
-                            <span>Destaque</span>
-                        </div>
-                        <div class="preview-card danger-preview">
-                            <span>Atenção</span>
-                        </div>
-                        <div class="preview-card warning-preview">
-                            <span>Aviso</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="settings-actions">
-                    <button class="button" id="save-colors">Guardar tema</button>
-                    <button class="button button-secondary" id="reset-colors">Restaurar padrão</button>
-                </div>
-            </article>
-
-            <article class="settings-card">
-                <div class="settings-card-header">
+            <details class="settings-card settings-control-card" open>
+                <summary class="settings-card-summary">
                     <h2>Sobre a aplicação</h2>
                     <p>Informações sobre o Orenji Fitness.</p>
-                </div>
+                </summary>
 
-                <div class="settings-info">
-                    <div class="info-item">
-                        <span class="info-label">Versão</span>
-                        <strong class="info-value">1.0.0</strong>
+                <div class="settings-accordion-body">
+                    <div class="settings-info">
+                        <div class="info-item">
+                            <span class="info-label">Versão</span>
+                            <strong class="info-value">1.0.0</strong>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Última atualização</span>
+                            <strong class="info-value">9 de junho de 2026</strong>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Desenvolvedor</span>
+                            <strong class="info-value">fallen_alex</strong>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Armazenamento</span>
+                            <strong class="info-value" id="storage-status">A calcular...</strong>
+                        </div>
                     </div>
-                    <div class="info-item">
-                        <span class="info-label">Última atualização</span>
-                        <strong class="info-value">14 de maio de 2026</strong>
-                    </div>
-                    <div class="info-item">
-                        <span class="info-label">Desenvolvedor</span>
-                        <strong class="info-value">fallen_alex</strong>
-                    </div>
-                </div>
 
-                <div class="settings-description">
-                    <p>O Orenji Fitness é a tua ferramenta pessoal para organizar treinos, acompanhar o progresso e manter uma rotina saudável.</p>
+                    <div class="settings-description">
+                        <p>O Orenji Fitness é a tua ferramenta pessoal para organizar treinos, acompanhar o progresso e manter uma rotina saudável.</p>
+                    </div>
                 </div>
-            </article>
+            </details>
         </section>
     </main>
 
@@ -256,6 +359,8 @@
     </footer>
 
     <script src="../Orenji%20core/js/theme.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/app.js"></script>
     <script src="js/settings.js"></script>
 </body>
 </html>

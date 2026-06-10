@@ -26,7 +26,9 @@ function renderHomePage() {
     const nameElement = document.getElementById('user-name');
     const loader = document.getElementById('schedule-roller');
     if (nameElement) {
-        nameElement.textContent = userProfile.displayName || 'amiga';
+        nameElement.textContent = typeof getFitnessUserName === 'function'
+            ? getFitnessUserName()
+            : userProfile.displayName || 'amiga';
     }
 
     if (loader) {

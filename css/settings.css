@@ -17,7 +17,8 @@
 .settings-grid {
     display: grid;
     gap: var(--grid-gap);
-    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+    align-items: start;
 }
 
 .settings-card {
@@ -28,8 +29,49 @@
     box-shadow: var(--card-shadow);
 }
 
+.personalization-card {
+    align-self: start;
+}
+
+.settings-control-card {
+    align-self: start;
+}
+
 .settings-card-header {
     margin-bottom: 1.5rem;
+}
+
+.settings-card-summary {
+    position: relative;
+    display: grid;
+    gap: 0.5rem;
+    padding-right: 2.25rem;
+    cursor: pointer;
+    list-style: none;
+}
+
+.settings-card-summary::-webkit-details-marker,
+.settings-disclosure summary::-webkit-details-marker {
+    display: none;
+}
+
+.settings-card-summary::after,
+.settings-disclosure summary::after {
+    content: "";
+    position: absolute;
+    right: 0.2rem;
+    top: 0.4rem;
+    width: 0.65rem;
+    height: 0.65rem;
+    border-right: 2px solid var(--text-muted);
+    border-bottom: 2px solid var(--text-muted);
+    transform: rotate(45deg);
+    transition: transform 180ms ease;
+}
+
+.personalization-card[open] > .settings-card-summary::after,
+.settings-disclosure[open] > summary::after {
+    transform: rotate(225deg);
 }
 
 .settings-card-header h2 {
@@ -37,10 +79,52 @@
     font-size: 1.4rem;
 }
 
+.settings-card-summary h2 {
+    margin: 0;
+    font-size: 1.4rem;
+}
+
 .settings-card-header p {
     color: var(--text-muted);
     margin: 0;
     font-size: 0.95rem;
+}
+
+.settings-card-summary p {
+    color: var(--text-muted);
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+.settings-accordion-body {
+    display: grid;
+    gap: 0.85rem;
+    margin-top: 1.5rem;
+}
+
+.settings-disclosure {
+    border: 1px solid var(--border);
+    border-radius: calc(var(--radius) * 0.75);
+    background: var(--panel-alt-bg);
+    overflow: hidden;
+}
+
+.settings-disclosure > summary {
+    position: relative;
+    padding: 1rem 2.4rem 1rem 1rem;
+    color: var(--text);
+    font-weight: 800;
+    cursor: pointer;
+    list-style: none;
+}
+
+.settings-disclosure > summary::after {
+    right: 1rem;
+    top: 1.05rem;
+}
+
+.settings-disclosure > :not(summary) {
+    margin: 0 1rem 1rem;
 }
 
 .settings-mode-toggle {
@@ -190,8 +274,16 @@
     height: 112%;
 }
 
+.theme-sync-control {
+    margin-top: 0;
+}
+
 .appearance-group {
     margin-top: 1.5rem;
+}
+
+.appearance-group:first-of-type {
+    margin-top: 0;
 }
 
 .appearance-group h3 {
@@ -259,9 +351,9 @@
 }
 
 .color-preview {
-    margin: 2rem 0;
-    padding-top: 2rem;
-    border-top: 1px solid var(--border);
+    margin: 0;
+    padding-top: 0;
+    border-top: none;
 }
 
 .color-preview h3 {
@@ -269,55 +361,84 @@
     font-size: 1.1rem;
 }
 
-.preview-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-    gap: 1rem;
-}
-
-.preview-card {
-    padding: 1.5rem;
-    border-radius: var(--radius);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-weight: 600;
-    min-height: 100px;
-    transition: transform 0.3s ease;
-}
-
-.preview-card:hover {
-    transform: scale(1.02);
-}
-
-.background-preview {
-    background: linear-gradient(135deg, var(--background), var(--background-end));
+.preview-app-shell {
+    overflow: hidden;
     border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: linear-gradient(135deg, var(--background), var(--background-end));
+    box-shadow: var(--card-shadow);
+}
+
+.preview-app-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem;
+    background: var(--header-bg);
+    color: var(--header-text);
+    border-bottom: 1px solid var(--border);
+}
+
+.preview-app-header span,
+.preview-workout-card strong,
+.preview-progress-card strong {
+    font-weight: 900;
+}
+
+.preview-app-header small,
+.preview-workout-card p {
+    color: var(--text-muted);
+}
+
+.preview-app-body {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(160px, 0.9fr);
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.preview-workout-card,
+.preview-progress-card {
+    display: grid;
+    align-content: start;
+    gap: 0.65rem;
+    min-width: 0;
+    padding: 1rem;
+    border: 1px solid var(--border);
+    border-radius: calc(var(--radius) * 0.75);
+    background: var(--panel-bg);
     color: var(--text);
 }
 
-.header-preview {
-    background: var(--header-bg);
-    color: var(--header-text);
-    border: 1px solid var(--border);
+.preview-workout-card p {
+    margin: 0;
 }
 
-.primary-preview {
-    background: linear-gradient(135deg, var(--primary), var(--primary-strong));
+.preview-workout-card .button {
+    justify-self: start;
+    margin-top: 0.25rem;
+    pointer-events: none;
 }
 
-.accent-preview {
-    background: var(--accent);
+.preview-kicker {
+    color: var(--primary);
+    font-size: 0.82rem;
+    font-weight: 900;
 }
 
-.danger-preview {
-    background: var(--danger);
+.preview-progress-bar {
+    overflow: hidden;
+    height: 0.85rem;
+    border-radius: 999px;
+    background: var(--secondary-bg);
 }
 
-.warning-preview {
-    background: var(--warning);
-    color: #0f172a;
+.preview-progress-bar span {
+    display: block;
+    width: 58%;
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
 }
 
 .settings-actions {
@@ -326,8 +447,100 @@
     margin-top: 2rem;
 }
 
+.settings-actions--compact {
+    margin: 0;
+}
+
 .settings-actions .button {
     flex: 1;
+}
+
+.settings-form-grid {
+    display: grid;
+    gap: 1rem;
+}
+
+.settings-field {
+    display: grid;
+    gap: 0.55rem;
+    color: var(--text);
+    font-weight: 800;
+}
+
+.settings-field input,
+.settings-field select {
+    width: 100%;
+    min-height: 3rem;
+    padding: 0 0.95rem;
+    border: 1px solid var(--border);
+    border-radius: calc(var(--radius) * 0.65);
+    background: var(--panel-bg);
+    color: var(--text);
+    font: inherit;
+}
+
+.settings-field input:focus,
+.settings-field select:focus {
+    outline: none;
+    border-color: rgba(var(--primary-rgb), 0.52);
+    box-shadow: 0 0 0 3px rgba(var(--primary-rgb), 0.12);
+}
+
+.data-actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--grid-gap);
+}
+
+.file-import-button {
+    justify-content: center;
+    cursor: pointer;
+}
+
+#import-data-file {
+    position: absolute;
+    inline-size: 1px;
+    block-size: 1px;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.settings-help,
+.settings-message,
+.danger-zone p {
+    margin: 0;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+.settings-message {
+    min-height: 1.5rem;
+    font-weight: 800;
+}
+
+.settings-message.is-success {
+    color: var(--accent);
+}
+
+.settings-message.is-error {
+    color: var(--danger);
+}
+
+.danger-zone {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: var(--grid-gap);
+    align-items: center;
+}
+
+.danger-zone strong {
+    display: block;
+    margin-bottom: 0.35rem;
+}
+
+.danger-button {
+    border-color: rgba(var(--danger-rgb), 0.42);
+    color: var(--danger);
 }
 
 .settings-info {
@@ -392,7 +605,9 @@
         padding: 0.48rem;
     }
 
-    .preview-grid {
+    .preview-app-body,
+    .data-actions,
+    .danger-zone {
         grid-template-columns: 1fr;
     }
 
