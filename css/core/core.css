@@ -1,0 +1,76 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: radial-gradient(circle at top, rgba(var(--primary-rgb), 0.18), transparent 35%),
+                linear-gradient(180deg, var(--background) 0%, var(--background-end) 100%);
+    color: var(--text);
+    min-height: 100%;
+}
+
+body {
+    line-height: 1.6;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+p {
+    overflow-wrap: anywhere;
+}
+
+label {
+    display: block;
+    font-size: 0.95rem;
+    margin-bottom: 0.4rem;
+    color: var(--text-muted);
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: var(--control-padding);
+    border-radius: calc(var(--radius) * 0.75);
+    border: 1px solid var(--border-strong);
+    background: var(--panel-bg);
+    color: var(--text);
+    font: inherit;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: rgba(var(--primary-rgb), 0.8);
+    box-shadow: var(--focus-ring);
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+button:focus-visible,
+a:focus-visible,
+summary:focus-visible {
+    outline: 2px solid rgba(var(--primary-rgb), 0.58);
+    outline-offset: 3px;
+}

@@ -1,0 +1,37 @@
+/* Orenji visual tokens shared by all Orenji apps. */
+:root {
+    --background: #020617;
+    --background-end: #0b1120;
+    --surface: #111827;
+    --surface-alt: #1f2937;
+    --text: #e2e8f0;
+    --text-muted: #94a3b8;
+    --header-text: #f8fafc;
+    --header-text-muted: #cbd5e1;
+    --primary: #5b96ff;
+    --primary-strong: #3b82f6;
+    --accent: #22c55e;
+    --danger: #f43f5e;
+    --warning: #facc15;
+    --primary-contrast: #ffffff;
+    --accent-contrast: #052e16;
+    --primary-rgb: 59, 130, 246;
+    --accent-rgb: 34, 197, 94;
+    --danger-rgb: 244, 63, 94;
+    --warning-rgb: 250, 204, 21;
+    --border: rgba(255,255,255,0.08);
+    --border-strong: rgba(255,255,255,0.12);
+    --panel-bg: rgba(255,255,255,0.05);
+    --panel-alt-bg: rgba(255,255,255,0.06);
+    --secondary-bg: rgba(255,255,255,0.08);
+    --header-bg: rgba(15,23,42,0.95);
+    --card-shadow: 0 20px 45px rgba(0,0,0,0.16);
+    --radius: 22px;
+    --section-padding: 3rem 0 2rem;
+    --card-padding: 1.75rem;
+    --grid-gap: 1.25rem;
+    --button-padding: 0.95rem 1.6rem;
+    --control-padding: 0.95rem 1rem;
+    --container-width: 1120px;
+    --focus-ring: 0 0 0 3px rgba(var(--primary-rgb), 0.12);
+}
